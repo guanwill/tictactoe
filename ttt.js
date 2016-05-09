@@ -117,18 +117,72 @@ $('#board').find('td').on('click', function(){
   }
   turnCount ++
 
-  console.log($('#board').find('.a1').text());
-  console.log($('#board').find('.a2').text());
-  console.log($('#board').find('.a3').text());
-  console.log(player1name);
-  console.log(player2name);
+  // console.log($('#board').find('.a1').text());
+  // console.log($('#board').find('.a2').text());
+  // console.log($('#board').find('.a3').text());
+  // console.log(player1name);
+  // console.log(player2name);
 })
 
 //check victory of player
 function checkWinner(player){
+  //check row 1
   if( $('#board').find('.a1').text() !== '' ){
-    if( $('#board').find('.a1').text() === $('#board').find('.a2').text() && $('#board').find('.a1').text() === $('#board').find('a3').text() ){
+    if( $('#board').find('.a1').text() === $('#board').find('.a2').text() && $('#board').find('.a1').text() === $('#board').find('.a3').text() ){
+      console.log(player +' is WINNER');
+    }
+  }
+  //check row 2
+  if( $('#board').find('.b1').text() !== '' ){
+    if( $('#board').find('.b1').text() === $('#board').find('.b2').text() && $('#board').find('.b1').text() === $('#board').find('.b3').text() ){
+      console.log(player +' is WINNER');
+    }
+  }
+  //check row 3
+  if( $('#board').find('.c1').text() !== '' ){
+    if( $('#board').find('.c1').text() === $('#board').find('.c2').text() && $('#board').find('.c1').text() === $('#board').find('.c3').text() ){
+      console.log(player +' is WINNER');
+    }
+  }
+  //diagonal 1
+  if( $('#board').find('.a1').text() !== '' ){
+    if( $('#board').find('.a1').text() === $('#board').find('.b2').text() && $('#board').find('.a1').text() === $('#board').find('.c3').text() ){
+      console.log(player +' is WINNER');
+    }
+  }
+  //diagonal 2
+  if( $('#board').find('.a3').text() !== '' ){
+    if( $('#board').find('.a3').text() === $('#board').find('.b2').text() && $('#board').find('.a3').text() === $('#board').find('.c1').text() ){
+      console.log(player +' is WINNER');
+    }
+  }
+  //column 1
+  if( $('#board').find('.a1').text() !== '' ){
+    if( $('#board').find('.a1').text() === $('#board').find('.b1').text() && $('#board').find('.a1').text() === $('#board').find('.c1').text() ){
+      console.log(player +' is WINNER');
+    }
+  }
+  //column 2
+  if( $('#board').find('.a2').text() !== '' ){
+    if( $('#board').find('.a2').text() === $('#board').find('.b2').text() && $('#board').find('.a2').text() === $('#board').find('.c2').text() ){
+      console.log(player +' is WINNER');
+    }
+  }
+  //column 3
+  if( $('#board').find('.a3').text() !== '' ){
+    if( $('#board').find('.a3').text() === $('#board').find('.b3').text() && $('#board').find('.a3').text() === $('#board').find('.c3').text() ){
       console.log(player +' is WINNER');
     }
   }
 }
+
+// ---------------EXTRA FEATURES---------------
+var player1DisplayName = $('<h3>').text("Get Ready!");
+body.append(player1DisplayName);
+
+//WIRE FRAMING - sketching of what is needed/sketch of the design, etc
+//player1winCount
+//player2winCount
+//timer
+//new game button/ refresh button
+//display name
