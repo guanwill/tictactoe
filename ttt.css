@@ -10,3 +10,14 @@ button#resetBoard{
 button#resetScore{
   display: none;
 }*/
+
+html{
+  background: url("https://davidkirkconceptart.files.wordpress.com/2015/01/ninja-village.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+h1{
+  color:white;
+}

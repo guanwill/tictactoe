@@ -1,7 +1,7 @@
 //----------HTML ELEMENTS-----------
 var body = $('body');
 //HEADING
-var welcome = $('<h1>').text("TIC TAC SHOOT");
+var welcome = $('<h1>').text("TIC TAC THROW");
 body.append(welcome);
 
 //DEFAULT PLAYER NAMES
@@ -74,7 +74,8 @@ function startClicking() {
   $('#board').find('td').on('click', function(){
   if(turnCount % 2 === 0) {
     currentPlayerTurn.text("Go, " + player2name);
-    $(this).text('X');
+    // $(this).text('X');
+    $(this).append('<img src="http://s32.postimg.org/ic45bivr5/kisekae_2_prop_ninja_star_by_zebuta_d8ru0p8.png">')
     $(this).off('click');
     checkWinner(player1name);
     // ifTie();
@@ -87,7 +88,8 @@ function startClicking() {
   }
   else{
     currentPlayerTurn.text("Go, " + player1name);
-    $(this).text('O');
+    // $(this).text('O');
+    $(this).append('<img src="http://s32.postimg.org/wbfljhzk1/shuriken_1.png">')
     $(this).off('click');
     checkWinner(player2name);
     // ifTie();
@@ -371,8 +373,6 @@ body.css({
 board.css({
   'width': '600px',
   'height':'600px',
-  // 'border-style': 'double',
-  // 'border-color': 'black',
   'border':'10px outset rgb(47,5,5)',
   'margin': '0 auto',
   'background': 'url("http://online.fliphtml5.com/aohj/rsyp/files/extfile/innerMainbgImgUrl.jpg")'
