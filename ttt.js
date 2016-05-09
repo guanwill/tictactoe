@@ -7,10 +7,10 @@ body.append(welcome);
 //DEFAULT PLAYER NAMES
 var player1name = 'Player One';
 var player2name = 'Player Two';
-var player1nameText = $('<h3>').attr('id','player1nameText').text(player1name);
-body.append(player1nameText);
-var player2nameText = $('<h3>').attr('id', 'player2nameText').text(player2name);
-body.append(player2nameText);
+// var player1nameText = $('<h3>').attr('id','player1nameText').text(player1name);
+// body.append(player1nameText);
+// var player2nameText = $('<h3>').attr('id', 'player2nameText').text(player2name);
+// body.append(player2nameText);
 
 //GET CURRENT PLAYER TURN
 var currentPlayerTurn = $('<h3>').attr('id', 'go').text("Go, " + player1name);
@@ -61,6 +61,8 @@ var resetScore = $('<button>')
 .attr('type', 'button')
 .text('RESET SCORE');
 body.append(resetScore);
+
+
 //----------------JAVASCRIPT------------------------
 
 
@@ -339,24 +341,24 @@ var getPlayerNames = function(){
 
   //IF NO INPUT, USE DEFAULT NAME, OTHERWISE PUT PLAYER'S NAME
   if (player1name == null){
-    player1nameText.text('Player One');
+    // player1nameText.text('Player One');
     player1WinText.text("Player One Total Wins: " +player1WinCount);
     currentPlayerTurn.text("Go, Player One!");
   }
   else {
-    player1nameText.text('Player One: ' + player1name);
+    // player1nameText.text('Player One: ' + player1name);
     player1WinText.text(player1name + " Total Wins: " +player1WinCount);
     currentPlayerTurn.text("Go, " + player1name);
 
   }
   if (player2name == null) {
-    player2nameText.text('Player Two');
+    // player2nameText.text('Player Two');
     player2WinText.text("Player Two Total Wins: " + player2WinCount);
     currentPlayerTurn.text("Go, Player Two!");
 
   }
   else {
-    player2nameText.text('Player Two: ' + player2name);
+    // player2nameText.text('Player Two: ' + player2name);
     player2WinText.text(player2name + " Total Wins: " + player2WinCount);
     currentPlayerTurn.text("Go, " + player2name);
   }
@@ -369,9 +371,11 @@ body.css({
 board.css({
   'width': '600px',
   'height':'600px',
-  'border-style': 'double',
-  'border-color': 'black',
-  'margin': '0 auto'
+  // 'border-style': 'double',
+  // 'border-color': 'black',
+  'border':'10px outset rgb(47,5,5)',
+  'margin': '0 auto',
+  'background': 'url("http://online.fliphtml5.com/aohj/rsyp/files/extfile/innerMainbgImgUrl.jpg")'
 })
 
 $('tr').css({
@@ -385,23 +389,27 @@ $('td').css({
   'width':'200px',
   'height':'170px',
   'border-style': 'solid',
-  'border-color':'black',
+  'border-color':'brown',
   'transition':'.2s ease-in-out',
-  'margin': '10px'
+  'margin': '10px',
+  'border-radius': '100%',
+  'background':'url("http://www.targetsoftware.co.uk/images/target.png")',
+  'background-position': 'center',
 })
 
 $('td').mouseover(function() {
   $(this).css({
-    'background-color':'red',
-    'transform': 'scale(1.15)',
-    'border':'2px solid orange'
+    // 'background':'red',
+    'transform': 'scale(1.05)',
+    'border':'2px solid red'
   })
 })
 $('td').mouseout(function() {
   $(this).css({
-    'background-color':'transparent',
+    'background':'url("http://www.targetsoftware.co.uk/images/target.png")',
+    'background-position': 'center',
     'transform':'none',
-    'border':'3px solid black',
+    'border':'3px solid brown',
   })
 })
 
