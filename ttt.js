@@ -13,7 +13,7 @@ var player2nameText = $('<h3>').text(player2name);
 body.append(player2nameText);
 
 //GET CURRENT PLAYER TURN
-var currentPlayerTurn = $('<h3>').text("Go, " + player1name);
+var currentPlayerTurn = $('<h3>').attr('id', 'go').text("Go, " + player1name);
 body.append(currentPlayerTurn);
 
 //CREATING BOARD/GRID
@@ -47,7 +47,7 @@ row3.append(c1, c2, c3);
 var startGame = $('<button>')
 .attr('id', 'startGame')
 .attr('type', 'button')
-.text('START PLAYING!');
+.text('NEW GAME');
 body.append(startGame);
 
 var resetBoard = $('<button>')
@@ -59,7 +59,7 @@ body.append(resetBoard);
 var resetScore = $('<button>')
 .attr('id', 'resetScore')
 .attr('type', 'button')
-.text('Reset Score');
+.text('RESET SCORE');
 body.append(resetScore);
 //----------------JAVASCRIPT------------------------
 
@@ -75,7 +75,7 @@ function startClicking() {
     $(this).text('X');
     $(this).off('click');
     checkWinner(player1name);
-    ifTie();
+    // ifTie();
     console.log(turnCount);
   }
   else{
@@ -83,22 +83,21 @@ function startClicking() {
     $(this).text('O');
     $(this).off('click');
     checkWinner(player2name);
-    ifTie();
+    // ifTie();
     console.log(turnCount);
   }
   turnCount ++
   })
 }
-startClicking();
+// startClicking();
 
 //GETTING PLAYER WINS;
 var player1WinCount = 0;
 var player2WinCount = 0;
 
-
-var player1WinText = $('<h3>').text(player1name + " Total Wins: " +player1WinCount);
+var player1WinText = $('<h3>').attr('id','player1WinText').text(player1name + " Total Wins: " +player1WinCount);
 body.append(player1WinText);
-var player2WinText = $('<h3>').text(player2name + " Total Wins: " + player2WinCount);
+var player2WinText = $('<h3>').attr('id','player2WinText').text(player2name + " Total Wins: " + player2WinCount);
 body.append(player2WinText);
 
 //CHECK WINNER
@@ -241,12 +240,12 @@ function checkWinner(player){
   }
 }
 
-// IF TIE
-function ifTie(){
-  if (turnCount === 8){
-    alert('tie!');
-  }
-}
+// // IF TIE  ---------------DOESNT WORK-----------
+// function ifTie(){
+//   if (turnCount === 8){
+//     alert('Tie!');
+//   }
+// }
 
 //RESET BOARD TO PLAY AGAIN
 $('button#resetBoard').on('click', function(){
@@ -269,6 +268,14 @@ $('button#resetScore').on('click', function(){
 $('button#startGame').on('click', function(){
   getPlayerNames();
   startClicking();
+  $('td').empty()
+  turnCount = 0;
+  currentPlayerTurn.text("Go, " + player1name);
+  console.log(turnCount);
+  player1WinCount = 0;
+  player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+  player2WinCount = 0;
+  player2WinText.text(player2name + " Total Wins: " +player2WinCount);
 })
 
 //GRAB SPECIFIC PLAYER NAMES WHEN YOU CLICK START GAME
