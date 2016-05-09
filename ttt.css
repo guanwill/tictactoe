@@ -1,4 +1,4 @@
-/*h3{
+h3{
   display: none;
 }
 table{
@@ -9,7 +9,7 @@ button#resetBoard{
 }
 button#resetScore{
   display: none;
-}*/
+}
 
 html{
   background: url("https://davidkirkconceptart.files.wordpress.com/2015/01/ninja-village.jpg") no-repeat center center fixed;

@@ -75,10 +75,10 @@ function startClicking() {
   if(turnCount % 2 === 0) {
     currentPlayerTurn.text("Go, " + player2name);
     // $(this).text('X');
-    $(this).append('<img src="http://s32.postimg.org/ic45bivr5/kisekae_2_prop_ninja_star_by_zebuta_d8ru0p8.png">')
+    $(this).append('<img id="p1" src="http://s32.postimg.org/ic45bivr5/kisekae_2_prop_ninja_star_by_zebuta_d8ru0p8.png">')
     $(this).off('click');
     checkWinner(player1name);
-    // ifTie();
+    ifTie();
     console.log(turnCount);
       if(turnCount===8){
         $('#go').css({
@@ -89,10 +89,10 @@ function startClicking() {
   else{
     currentPlayerTurn.text("Go, " + player1name);
     // $(this).text('O');
-    $(this).append('<img src="http://s32.postimg.org/wbfljhzk1/shuriken_1.png">')
+    $(this).append('<img id="p2" src="http://s32.postimg.org/wbfljhzk1/shuriken_1.png">')
     $(this).off('click');
     checkWinner(player2name);
-    // ifTie();
+    ifTie();
     if(turnCount===8){
       ('#go').css({
         'visibility':'hidden'
@@ -109,16 +109,22 @@ function startClicking() {
 var player1WinCount = 0;
 var player2WinCount = 0;
 
-var player1WinText = $('<h3>').attr('id','player1WinText').text(player1name + " Total Wins: " +player1WinCount);
+var player1WinText = $('<h3>').attr('id','player1WinText').text(player1name + " Wins: " +player1WinCount);
 body.append(player1WinText);
-var player2WinText = $('<h3>').attr('id','player2WinText').text(player2name + " Total Wins: " + player2WinCount);
+var player2WinText = $('<h3>').attr('id','player2WinText').text(player2name + " Wins: " + player2WinCount);
 body.append(player2WinText);
 
-//CHECK WINNER
+// //TEST IMAGE CONDITION
+// if( $('#board .a1 #p1').length !== '' ){
+//   if( $('#board').find('.a1').attr('src') === $('#board').find('.a2').attr('src') && $('#board').find('.a1').attr('src') === $('#board').find('.a3').attr('src') ){
+//     alert(player +' is WINNER');
+
+
+//CHECK WINNER WITH P1 IMAGE
 function checkWinner(player){
   //check row 1
-  if( $('#board').find('.a1').text() !== '' ){
-    if( $('#board').find('.a1').text() === $('#board').find('.a2').text() && $('#board').find('.a1').text() === $('#board').find('.a3').text() ){
+  if( $('#board').find('.a1').length !== '' ){
+    if( $('#board .1 .a1 #p1').length !=0 && $('#board .1 .a2 #p1').length !=0 && $('#board .1 .a3 #p1').length !=0 ){
       alert(player +' is WINNER');
 
       $('#board').find('td').off('click');
@@ -128,17 +134,17 @@ function checkWinner(player){
 
       if(player === player1name){
         player1WinCount++;
-        player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+        player1WinText.text(player1name + " Wins: " +player1WinCount);
       }
       else if (player == player2name){
         player2WinCount++;
-        player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+        player2WinText.text(player2name + " Wins: " +player2WinCount);
       }
     }
   }
   //check row 2
-  if( $('#board').find('.b1').text() !== '' ){
-    if( $('#board').find('.b1').text() === $('#board').find('.b2').text() && $('#board').find('.b1').text() === $('#board').find('.b3').text() ){
+  if( $('#board').find('.b1').length !== '' ){
+    if( $('#board .2 .b1 #p1').length !=0 && $('#board .2 .b2 #p1').length !=0 && $('#board .2 .b3 #p1').length !=0 ){
       alert(player +' is WINNER');
 
       $('#board').find('td').off('click');
@@ -148,17 +154,17 @@ function checkWinner(player){
 
       if(player === player1name){
         player1WinCount++;
-        player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+        player1WinText.text(player1name + " Wins: " +player1WinCount);
       }
       else if (player == player2name){
         player2WinCount++;
-        player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+        player2WinText.text(player2name + " Wins: " +player2WinCount);
       }
     }
   }
   //check row 3
-  if( $('#board').find('.c1').text() !== '' ){
-    if( $('#board').find('.c1').text() === $('#board').find('.c2').text() && $('#board').find('.c1').text() === $('#board').find('.c3').text() ){
+  if( $('#board').find('.c1').length !== '' ){
+    if( $('#board .3 .c1 #p1').length !=0 && $('#board .3 .c2 #p1').length !=0 && $('#board .3 .c3 #p1').length !=0 ){
       alert(player +' is WINNER');
 
       $('#board').find('td').off('click');
@@ -171,17 +177,17 @@ function checkWinner(player){
 
       if(player === player1name){
         player1WinCount++;
-        player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+        player1WinText.text(player1name + " Wins: " +player1WinCount);
       }
       else if (player == player2name){
         player2WinCount++;
-        player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+        player2WinText.text(player2name + " Wins: " +player2WinCount);
       }
     }
   }
   //diagonal 1
-  if( $('#board').find('.a1').text() !== '' ){
-    if( $('#board').find('.a1').text() === $('#board').find('.b2').text() && $('#board').find('.a1').text() === $('#board').find('.c3').text() ){
+  if( $('#board').find('.a1').length !== '' ){
+    if( $('#board .1 .a1 #p1').length !=0 && $('#board .2 .b2 #p1').length !=0 && $('#board .3 .c3 #p1').length !=0 ){
       alert(player +' is WINNER');
 
       $('#board').find('td').off('click');
@@ -191,17 +197,17 @@ function checkWinner(player){
 
       if(player === player1name){
         player1WinCount++;
-        player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+        player1WinText.text(player1name + " Wins: " +player1WinCount);
       }
       else if (player == player2name){
         player2WinCount++;
-        player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+        player2WinText.text(player2name + " Wins: " +player2WinCount);
       }
     }
   }
   //diagonal 2
-  if( $('#board').find('.a3').text() !== '' ){
-    if( $('#board').find('.a3').text() === $('#board').find('.b2').text() && $('#board').find('.a3').text() === $('#board').find('.c1').text() ){
+  if( $('#board').find('.a3').length !== '' ){
+    if( $('#board .1 .a3 #p1').length !=0 && $('#board .2 .b2 #p1').length !=0 && $('#board .3 .c1 #p1').length !=0 ){
       alert(player +' is WINNER');
 
       $('#board').find('td').off('click');
@@ -211,17 +217,17 @@ function checkWinner(player){
 
       if(player === player1name){
         player1WinCount++;
-        player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+        player1WinText.text(player1name + " Wins: " +player1WinCount);
       }
       else if (player == player2name){
         player2WinCount++;
-        player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+        player2WinText.text(player2name + " Wins: " +player2WinCount);
       }
     }
   }
   //column 1
-  if( $('#board').find('.a1').text() !== '' ){
-    if( $('#board').find('.a1').text() === $('#board').find('.b1').text() && $('#board').find('.a1').text() === $('#board').find('.c1').text() ){
+  if( $('#board').find('.a1').length !== '' ){
+    if( $('#board .1 .a1 #p1').length !=0 && $('#board .2 .b1 #p1').length !=0 && $('#board .3 .c1 #p1').length !=0 ){
       alert(player +' is WINNER');
 
       $('#board').find('td').off('click');
@@ -231,17 +237,17 @@ function checkWinner(player){
 
       if(player === player1name){
         player1WinCount++;
-        player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+        player1WinText.text(player1name + " Wins: " +player1WinCount);
       }
       else if (player == player2name){
         player2WinCount++;
-        player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+        player2WinText.text(player2name + " Wins: " +player2WinCount);
       }
     }
   }
   //column 2
-  if( $('#board').find('.a2').text() !== '' ){
-    if( $('#board').find('.a2').text() === $('#board').find('.b2').text() && $('#board').find('.a2').text() === $('#board').find('.c2').text() ){
+  if( $('#board').find('.c1').length !== '' ){
+    if( $('#board .1 .b2 #p1').length !=0 && $('#board .2 .b2 #p1').length !=0 && $('#board .3 .c2 #p1').length !=0 ){
       alert(player +' is WINNER');
 
       $('#board').find('td').off('click');
@@ -251,17 +257,17 @@ function checkWinner(player){
 
       if(player === player1name){
         player1WinCount++;
-        player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+        player1WinText.text(player1name + " Wins: " +player1WinCount);
       }
       else if (player == player2name){
         player2WinCount++;
-        player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+        player2WinText.text(player2name + " Wins: " +player2WinCount);
       }
     }
   }
   //column 3
-  if( $('#board').find('.a3').text() !== '' ){
-    if( $('#board').find('.a3').text() === $('#board').find('.b3').text() && $('#board').find('.a3').text() === $('#board').find('.c3').text() ){
+  if( $('#board').find('.c1').length !== '' ){
+    if( $('#board .1 .a3 #p1').length !=0 && $('#board .2 .b3 #p1').length !=0 && $('#board .3 .c3 #p1').length !=0 ){
       alert(player +' is WINNER');
 
       $('#board').find('td').off('click');
@@ -271,22 +277,22 @@ function checkWinner(player){
 
       if(player === player1name){
         player1WinCount++;
-        player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+        player1WinText.text(player1name + " Wins: " +player1WinCount);
       }
       else if (player == player2name){
         player2WinCount++;
-        player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+        player2WinText.text(player2name + " Wins: " +player2WinCount);
       }
     }
   }
 }
 
 // // IF TIE  ---------------DOESNT WORK-----------
-// function ifTie(){
-//   if (turnCount === 8){
-//     alert('Tie!');
-//   }
-// }
+function ifTie(){
+  if (turnCount === 8){
+    alert('ROUND FINISHED!');
+  }
+}
 
 //RESET BOARD TO PLAY AGAIN
 $('button#resetBoard').on('click', function(){
@@ -304,9 +310,9 @@ $('button#resetBoard').on('click', function(){
 //RESET SCORE
 $('button#resetScore').on('click', function(){
   player1WinCount = 0;
-  player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+  player1WinText.text(player1name + " Wins: " +player1WinCount);
   player2WinCount = 0;
-  player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+  player2WinText.text(player2name + " Wins: " +player2WinCount);
 })
 
 //START GAME
@@ -318,9 +324,9 @@ $('button#startGame').on('click', function(){
   currentPlayerTurn.text("Go, " + player1name);
   console.log(turnCount);
   player1WinCount = 0;
-  player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+  player1WinText.text(player1name + " Wins: " +player1WinCount);
   player2WinCount = 0;
-  player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+  player2WinText.text(player2name + " Wins: " +player2WinCount);
 
   $('h3').css({
     'display': 'block'
@@ -344,24 +350,24 @@ var getPlayerNames = function(){
   //IF NO INPUT, USE DEFAULT NAME, OTHERWISE PUT PLAYER'S NAME
   if (player1name == null){
     // player1nameText.text('Player One');
-    player1WinText.text("Player One Total Wins: " +player1WinCount);
+    player1WinText.text("Player One Wins: " +player1WinCount);
     currentPlayerTurn.text("Go, Player One!");
   }
   else {
     // player1nameText.text('Player One: ' + player1name);
-    player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+    player1WinText.text(player1name + " Wins: " +player1WinCount);
     currentPlayerTurn.text("Go, " + player1name);
 
   }
   if (player2name == null) {
     // player2nameText.text('Player Two');
-    player2WinText.text("Player Two Total Wins: " + player2WinCount);
+    player2WinText.text("Player Two Wins: " + player2WinCount);
     currentPlayerTurn.text("Go, Player Two!");
 
   }
   else {
     // player2nameText.text('Player Two: ' + player2name);
-    player2WinText.text(player2name + " Total Wins: " + player2WinCount);
+    player2WinText.text(player2name + " Wins: " + player2WinCount);
     currentPlayerTurn.text("Go, " + player2name);
   }
 }
