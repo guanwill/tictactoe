@@ -1,0 +1,36 @@
+/*h3{
+  display: none;
+}
+table{
+  display: none;
+}
+button#resetBoard{
+  display: none;
+}
+button#resetScore{
+  display: none;
+}*/
+
+#player1nameText{
+  text-align: left;
+  color: red;
+  position: absolute;
+  top: 5px;
+  left: 50px;
+  border: 2px solid brown;
+  border-radius: 2px;
+  padding: 10px;
+}
+#player2nameText{
+  text-align: left;
+  color: red;
+  position: absolute;
+  top: 5px;
+  left: 850px;
+  border: 2px solid brown;
+  border-radius: 2px;
+  padding: 10px;
+}
+#go {
+
+}

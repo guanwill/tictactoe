@@ -1,15 +1,15 @@
 //----------HTML ELEMENTS-----------
 var body = $('body');
 //HEADING
-var welcome = $('<h1>').text("TIC TAC TOE");
+var welcome = $('<h1>').text("TIC TAC SHOOT");
 body.append(welcome);
 
 //DEFAULT PLAYER NAMES
 var player1name = 'Player One';
 var player2name = 'Player Two';
-var player1nameText = $('<h3>').text(player1name);
+var player1nameText = $('<h3>').attr('id','player1nameText').text(player1name);
 body.append(player1nameText);
-var player2nameText = $('<h3>').text(player2name);
+var player2nameText = $('<h3>').attr('id', 'player2nameText').text(player2name);
 body.append(player2nameText);
 
 //GET CURRENT PLAYER TURN
@@ -77,6 +77,11 @@ function startClicking() {
     checkWinner(player1name);
     // ifTie();
     console.log(turnCount);
+      if(turnCount===8){
+        $('#go').css({
+          'visibility':'hidden'
+        })
+      }
   }
   else{
     currentPlayerTurn.text("Go, " + player1name);
@@ -84,6 +89,11 @@ function startClicking() {
     $(this).off('click');
     checkWinner(player2name);
     // ifTie();
+    if(turnCount===8){
+      ('#go').css({
+        'visibility':'hidden'
+      })
+    }
     console.log(turnCount);
   }
   turnCount ++
@@ -108,6 +118,9 @@ function checkWinner(player){
       alert(player +' is WINNER');
 
       $('#board').find('td').off('click');
+      $('#go').css({
+        'visibility':'hidden'
+      })
 
       if(player === player1name){
         player1WinCount++;
@@ -125,6 +138,9 @@ function checkWinner(player){
       alert(player +' is WINNER');
 
       $('#board').find('td').off('click');
+      $('#go').css({
+        'visibility':'hidden'
+      })
 
       if(player === player1name){
         player1WinCount++;
@@ -142,6 +158,12 @@ function checkWinner(player){
       alert(player +' is WINNER');
 
       $('#board').find('td').off('click');
+      $('#go').css({
+        'visibility':'hidden'
+      })
+      $('#go').css({
+        'visibility':'hidden'
+      })
 
       if(player === player1name){
         player1WinCount++;
@@ -159,6 +181,9 @@ function checkWinner(player){
       alert(player +' is WINNER');
 
       $('#board').find('td').off('click');
+      $('#go').css({
+        'visibility':'hidden'
+      })
 
       if(player === player1name){
         player1WinCount++;
@@ -176,6 +201,9 @@ function checkWinner(player){
       alert(player +' is WINNER');
 
       $('#board').find('td').off('click');
+      $('#go').css({
+        'visibility':'hidden'
+      })
 
       if(player === player1name){
         player1WinCount++;
@@ -193,6 +221,9 @@ function checkWinner(player){
       alert(player +' is WINNER');
 
       $('#board').find('td').off('click');
+      $('#go').css({
+        'visibility':'hidden'
+      })
 
       if(player === player1name){
         player1WinCount++;
@@ -210,6 +241,9 @@ function checkWinner(player){
       alert(player +' is WINNER');
 
       $('#board').find('td').off('click');
+      $('#go').css({
+        'visibility':'hidden'
+      })
 
       if(player === player1name){
         player1WinCount++;
@@ -227,6 +261,9 @@ function checkWinner(player){
       alert(player +' is WINNER');
 
       $('#board').find('td').off('click');
+      $('#go').css({
+        'visibility':'hidden'
+      })
 
       if(player === player1name){
         player1WinCount++;
@@ -254,6 +291,10 @@ $('button#resetBoard').on('click', function(){
     currentPlayerTurn.text("Go, " + player1name);
     startClicking();
     console.log(turnCount);
+
+    $('#go').css({
+      'visibility':'visible'
+    })
 })
 
 //RESET SCORE
@@ -276,6 +317,19 @@ $('button#startGame').on('click', function(){
   player1WinText.text(player1name + " Total Wins: " +player1WinCount);
   player2WinCount = 0;
   player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+
+  $('h3').css({
+    'display': 'block'
+  })
+  $('table').css({
+    'display': 'block'
+  })
+  $('button#resetBoard').css({
+    'display': 'inline-block'
+  })
+  $('button#resetScore').css({
+    'display': 'inline-block'
+  })
 })
 
 //GRAB SPECIFIC PLAYER NAMES WHEN YOU CLICK START GAME
