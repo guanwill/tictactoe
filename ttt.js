@@ -1,14 +1,26 @@
 //----------HTML ELEMENTS-----------
 var body = $('body');
-
+//HEADING
 var welcome = $('<h1>').text("TIC TAC TOE");
 body.append(welcome);
-var place = $('<h3>').text("Get Ready!");
-body.append(place);
 
+//DEFAULT PLAYER NAMES
+var player1name = 'Player One';
+var player2name = 'Player Two';
+var player1nameText = $('<h3>').text(player1name);
+body.append(player1nameText);
+var player2nameText = $('<h3>').text(player2name);
+body.append(player2nameText);
+
+//GET CURRENT PLAYER TURN
+var currentPlayerTurn = $('<h3>').text("Go, " + player1name);
+body.append(currentPlayerTurn);
+
+//CREATING BOARD/GRID
 var board = $('<table>').attr('id','board');
 body.append(board);
 
+//adding rows 1, 2, 3
 var row1 = $('<tr>').addClass('row 1');
 var row2 = $('<tr>').addClass('row 2');
 var row3 = $('<tr>').addClass('row 3');
@@ -32,11 +44,262 @@ var c2 = $('<td>').addClass('c2');
 var c3 = $('<td>').addClass('c3');
 row3.append(c1, c2, c3);
 
-//WINNER Text
-var winner = $('<div>').attr('id', 'winner');
-var winnerText = $('<h1>').text("WINNER !!");
-winner.append(winnerText);
-body.append(winner);
+var startGame = $('<button>')
+.attr('id', 'startGame')
+.attr('type', 'button')
+.text('START PLAYING!');
+body.append(startGame);
+
+var resetBoard = $('<button>')
+.attr('id', 'resetBoard')
+.attr('type', 'button')
+.text('PLAY AGAIN!');
+body.append(resetBoard);
+
+var resetScore = $('<button>')
+.attr('id', 'resetScore')
+.attr('type', 'button')
+.text('Reset Score');
+body.append(resetScore);
+//----------------JAVASCRIPT------------------------
+
+
+
+//CLICK FUNCTION TO INSERT MARKET AND CALLING THE CHECKWINNER FUNCTION EVERY TIME
+var turnCount = 0;
+
+function startClicking() {
+  $('#board').find('td').on('click', function(){
+  if(turnCount % 2 === 0) {
+    currentPlayerTurn.text("Go, " + player2name);
+    $(this).text('X');
+    $(this).off('click');
+    checkWinner(player1name);
+    ifTie();
+    console.log(turnCount);
+  }
+  else{
+    currentPlayerTurn.text("Go, " + player1name);
+    $(this).text('O');
+    $(this).off('click');
+    checkWinner(player2name);
+    ifTie();
+    console.log(turnCount);
+  }
+  turnCount ++
+  })
+}
+startClicking();
+
+//GETTING PLAYER WINS;
+var player1WinCount = 0;
+var player2WinCount = 0;
+
+
+var player1WinText = $('<h3>').text(player1name + " Total Wins: " +player1WinCount);
+body.append(player1WinText);
+var player2WinText = $('<h3>').text(player2name + " Total Wins: " + player2WinCount);
+body.append(player2WinText);
+
+//CHECK WINNER
+function checkWinner(player){
+  //check row 1
+  if( $('#board').find('.a1').text() !== '' ){
+    if( $('#board').find('.a1').text() === $('#board').find('.a2').text() && $('#board').find('.a1').text() === $('#board').find('.a3').text() ){
+      alert(player +' is WINNER');
+
+      $('#board').find('td').off('click');
+
+      if(player === player1name){
+        player1WinCount++;
+        player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+      }
+      else if (player == player2name){
+        player2WinCount++;
+        player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+      }
+    }
+  }
+  //check row 2
+  if( $('#board').find('.b1').text() !== '' ){
+    if( $('#board').find('.b1').text() === $('#board').find('.b2').text() && $('#board').find('.b1').text() === $('#board').find('.b3').text() ){
+      alert(player +' is WINNER');
+
+      $('#board').find('td').off('click');
+
+      if(player === player1name){
+        player1WinCount++;
+        player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+      }
+      else if (player == player2name){
+        player2WinCount++;
+        player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+      }
+    }
+  }
+  //check row 3
+  if( $('#board').find('.c1').text() !== '' ){
+    if( $('#board').find('.c1').text() === $('#board').find('.c2').text() && $('#board').find('.c1').text() === $('#board').find('.c3').text() ){
+      alert(player +' is WINNER');
+
+      $('#board').find('td').off('click');
+
+      if(player === player1name){
+        player1WinCount++;
+        player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+      }
+      else if (player == player2name){
+        player2WinCount++;
+        player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+      }
+    }
+  }
+  //diagonal 1
+  if( $('#board').find('.a1').text() !== '' ){
+    if( $('#board').find('.a1').text() === $('#board').find('.b2').text() && $('#board').find('.a1').text() === $('#board').find('.c3').text() ){
+      alert(player +' is WINNER');
+
+      $('#board').find('td').off('click');
+
+      if(player === player1name){
+        player1WinCount++;
+        player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+      }
+      else if (player == player2name){
+        player2WinCount++;
+        player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+      }
+    }
+  }
+  //diagonal 2
+  if( $('#board').find('.a3').text() !== '' ){
+    if( $('#board').find('.a3').text() === $('#board').find('.b2').text() && $('#board').find('.a3').text() === $('#board').find('.c1').text() ){
+      alert(player +' is WINNER');
+
+      $('#board').find('td').off('click');
+
+      if(player === player1name){
+        player1WinCount++;
+        player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+      }
+      else if (player == player2name){
+        player2WinCount++;
+        player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+      }
+    }
+  }
+  //column 1
+  if( $('#board').find('.a1').text() !== '' ){
+    if( $('#board').find('.a1').text() === $('#board').find('.b1').text() && $('#board').find('.a1').text() === $('#board').find('.c1').text() ){
+      alert(player +' is WINNER');
+
+      $('#board').find('td').off('click');
+
+      if(player === player1name){
+        player1WinCount++;
+        player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+      }
+      else if (player == player2name){
+        player2WinCount++;
+        player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+      }
+    }
+  }
+  //column 2
+  if( $('#board').find('.a2').text() !== '' ){
+    if( $('#board').find('.a2').text() === $('#board').find('.b2').text() && $('#board').find('.a2').text() === $('#board').find('.c2').text() ){
+      alert(player +' is WINNER');
+
+      $('#board').find('td').off('click');
+
+      if(player === player1name){
+        player1WinCount++;
+        player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+      }
+      else if (player == player2name){
+        player2WinCount++;
+        player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+      }
+    }
+  }
+  //column 3
+  if( $('#board').find('.a3').text() !== '' ){
+    if( $('#board').find('.a3').text() === $('#board').find('.b3').text() && $('#board').find('.a3').text() === $('#board').find('.c3').text() ){
+      alert(player +' is WINNER');
+
+      $('#board').find('td').off('click');
+
+      if(player === player1name){
+        player1WinCount++;
+        player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+      }
+      else if (player == player2name){
+        player2WinCount++;
+        player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+      }
+    }
+  }
+}
+
+// IF TIE
+function ifTie(){
+  if (turnCount === 8){
+    alert('tie!');
+  }
+}
+
+//RESET BOARD TO PLAY AGAIN
+$('button#resetBoard').on('click', function(){
+    $('td').empty()
+    turnCount = 0;
+    currentPlayerTurn.text("Go, " + player1name);
+    startClicking();
+    console.log(turnCount);
+})
+
+//RESET SCORE
+$('button#resetScore').on('click', function(){
+  player1WinCount = 0;
+  player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+  player2WinCount = 0;
+  player2WinText.text(player2name + " Total Wins: " +player2WinCount);
+})
+
+//START GAME
+$('button#startGame').on('click', function(){
+  getPlayerNames();
+  startClicking();
+})
+
+//GRAB SPECIFIC PLAYER NAMES WHEN YOU CLICK START GAME
+var getPlayerNames = function(){
+  player1name = prompt('Player 1, what is your name?');
+  player2name = prompt('Player 2, what is your name?');
+
+  //IF NO INPUT, USE DEFAULT NAME, OTHERWISE PUT PLAYER'S NAME
+  if (player1name == null){
+    player1nameText.text('Player One');
+    player1WinText.text("Player One Total Wins: " +player1WinCount);
+    currentPlayerTurn.text("Go, Player One!");
+  }
+  else {
+    player1nameText.text('Player One: ' + player1name);
+    player1WinText.text(player1name + " Total Wins: " +player1WinCount);
+    currentPlayerTurn.text("Go, " + player1name);
+
+  }
+  if (player2name == null) {
+    player2nameText.text('Player Two');
+    player2WinText.text("Player Two Total Wins: " + player2WinCount);
+    currentPlayerTurn.text("Go, Player Two!");
+
+  }
+  else {
+    player2nameText.text('Player Two: ' + player2name);
+    player2WinText.text(player2name + " Total Wins: " + player2WinCount);
+    currentPlayerTurn.text("Go, " + player2name);
+  }
+}
 
 //-------------CSS---------------
 body.css({
@@ -86,99 +349,8 @@ $('img').css({
   'height':'150px'
 })
 
-winner.css({
-  'display':'none'
-})
-
-//----------------JAVASCRIPT------------------------
-
-//CLICK FUNCTION to insert X..may need another one for Os
-// $('.row > .column').on('click', function(){
-//   $(this).append('<img src="http://icons.iconarchive.com/icons/icons8/windows-8/128/Military-Battleship-icon.png" alt="">')
-//     .css('border-color', 'red');
-// });
-
-
-var turnCount = 0;
-var player1name = prompt('Player 1, what is your name?');
-var player2name = prompt('Player 2, what is your name?');
-
-
-
-//click function to insert X for player 1
-$('#board').find('td').on('click', function(){
-  if(turnCount % 2 === 0) {
-    $(this).text('X');
-    checkWinner(player1name);
-  }
-  else{
-    $(this).text('O');
-    checkWinner(player2name);
-  }
-  turnCount ++
-
-  // console.log($('#board').find('.a1').text());
-  // console.log($('#board').find('.a2').text());
-  // console.log($('#board').find('.a3').text());
-  // console.log(player1name);
-  // console.log(player2name);
-})
-
-//check victory of player
-function checkWinner(player){
-  //check row 1
-  if( $('#board').find('.a1').text() !== '' ){
-    if( $('#board').find('.a1').text() === $('#board').find('.a2').text() && $('#board').find('.a1').text() === $('#board').find('.a3').text() ){
-      console.log(player +' is WINNER');
-    }
-  }
-  //check row 2
-  if( $('#board').find('.b1').text() !== '' ){
-    if( $('#board').find('.b1').text() === $('#board').find('.b2').text() && $('#board').find('.b1').text() === $('#board').find('.b3').text() ){
-      console.log(player +' is WINNER');
-    }
-  }
-  //check row 3
-  if( $('#board').find('.c1').text() !== '' ){
-    if( $('#board').find('.c1').text() === $('#board').find('.c2').text() && $('#board').find('.c1').text() === $('#board').find('.c3').text() ){
-      console.log(player +' is WINNER');
-    }
-  }
-  //diagonal 1
-  if( $('#board').find('.a1').text() !== '' ){
-    if( $('#board').find('.a1').text() === $('#board').find('.b2').text() && $('#board').find('.a1').text() === $('#board').find('.c3').text() ){
-      console.log(player +' is WINNER');
-    }
-  }
-  //diagonal 2
-  if( $('#board').find('.a3').text() !== '' ){
-    if( $('#board').find('.a3').text() === $('#board').find('.b2').text() && $('#board').find('.a3').text() === $('#board').find('.c1').text() ){
-      console.log(player +' is WINNER');
-    }
-  }
-  //column 1
-  if( $('#board').find('.a1').text() !== '' ){
-    if( $('#board').find('.a1').text() === $('#board').find('.b1').text() && $('#board').find('.a1').text() === $('#board').find('.c1').text() ){
-      console.log(player +' is WINNER');
-    }
-  }
-  //column 2
-  if( $('#board').find('.a2').text() !== '' ){
-    if( $('#board').find('.a2').text() === $('#board').find('.b2').text() && $('#board').find('.a2').text() === $('#board').find('.c2').text() ){
-      console.log(player +' is WINNER');
-    }
-  }
-  //column 3
-  if( $('#board').find('.a3').text() !== '' ){
-    if( $('#board').find('.a3').text() === $('#board').find('.b3').text() && $('#board').find('.a3').text() === $('#board').find('.c3').text() ){
-      console.log(player +' is WINNER');
-    }
-  }
-}
 
 // ---------------EXTRA FEATURES---------------
-var player1DisplayName = $('<h3>').text("Get Ready!");
-body.append(player1DisplayName);
 
 //WIRE FRAMING - sketching of what is needed/sketch of the design, etc
 //player1winCount
