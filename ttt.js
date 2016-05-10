@@ -83,7 +83,10 @@ function startClicking() {
   if(turnCount % 2 === 0) {
     currentPlayerTurn.text("Your Turn, Ninja " + player2name +"!" );
     // $(this).text('X');
-    $(this).append('<img id="p1" src="http://s32.postimg.org/ic45bivr5/kisekae_2_prop_ninja_star_by_zebuta_d8ru0p8.png">')
+    $(this).append('<img id="p1" src="http://s32.postimg.org/ic45bivr5/kisekae_2_prop_ninja_star_by_zebuta_d8ru0p8.png">');
+    $(this).fadeTo('slow',0);
+
+
     $(this).off('click');
     checkWinner(player1name);
     ifTie();
@@ -98,6 +101,8 @@ function startClicking() {
     currentPlayerTurn.text("Your Turn, Hokage " + player1name +"!" );
     // $(this).text('O');
     $(this).append('<img id="p2" src="http://s32.postimg.org/wbfljhzk1/shuriken_1.png">')
+    $(this).fadeTo('slow',0);
+
     $(this).off('click');
     checkWinner(player2name);
     ifTie();
@@ -420,8 +425,8 @@ function checkWinner(player){
       }
     }
     //column 2
-    if( $('#board').find('.c1').length !== '' ){
-      if( $('#board .1 .b2 #p2').length !=0 && $('#board .2 .b2 #p2').length !=0 && $('#board .3 .c2 #p2').length !=0 ){
+    if( $('#board').find('.a2').length !== '' ){
+      if( $('#board .1 .a2 #p2').length !=0 && $('#board .2 .b2 #p2').length !=0 && $('#board .3 .c2 #p2').length !=0 ){
         alert(player +' is WINNER');
 
         $('#board').find('td').off('click');
@@ -474,6 +479,8 @@ function ifTie(){
 $('button#resetBoard').on('click', function(){
     $('td').empty()
     turnCount = 0;
+    $('td').fadeTo('slow',1);
+
     currentPlayerTurn.text("Your Turn, Hokage " + player1name +"!" );
     startClicking();
     console.log(turnCount);
@@ -489,6 +496,7 @@ $('button#resetScore').on('click', function(){
   player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
   player2WinCount = 0;
   player2WinText.text(player2WinCount + " " + player2name);
+
 })
 
 //START GAME
@@ -496,6 +504,8 @@ $('button#startGame').on('click', function(){
   getPlayerNames();
   $('td').empty()
   turnCount = 0;
+  $('td').fadeTo('slow',1);
+
   currentPlayerTurn.text("Your Turn, Hokage " + player1name +"!" );
   console.log(turnCount);
   player1WinCount = 0;
@@ -568,9 +578,9 @@ body.css({
 board.css({
   'width': '600px',
   'height':'600px',
-  'border':'10px outset rgb(47,5,5)',
+  // 'border':'10px outset rgb(47,5,5)',
   'margin': '0 auto',
-  'background': 'url("http://wood-center.gr/Photos/bg.jpg") no-repeat center center fixed'
+  // 'background': 'url("http://wood-center.gr/Photos/bg.jpg") no-repeat center center fixed'
 })
 
 $('tr').css({
