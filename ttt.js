@@ -73,6 +73,9 @@ body.append(resetScore);
 
 //----------------JAVASCRIPT------------------------
 
+//MOUSE CURSOR
+// $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //gun
+// $('body').css('cursor', 'url("http://s32.postimg.org/p815ukclt/swordcursor.png"),auto'); //sword
 
 
 //CLICK FUNCTION TO INSERT MARKET AND CALLING THE CHECKWINNER FUNCTION EVERY TIME
@@ -82,6 +85,8 @@ function startClicking() {
   $('#board').find('td').on('click', function(){
   if(turnCount % 2 === 0) {
     currentPlayerTurn.text("Your Turn, Ninja " + player2name +"!" );
+    $('body').css('cursor', 'url("http://s32.postimg.org/p815ukclt/swordcursor.png"),auto');
+
     // $(this).text('X');
     // $(this).append('<img id="p1" src="http://s32.postimg.org/ic45bivr5/kisekae_2_prop_Ninja_star_by_zebuta_d8ru0p8.png">');
     $(this).append('<img id="p1" src="http://s32.postimg.org/iy0b3td5d/explosion.png">');
@@ -102,6 +107,7 @@ function startClicking() {
   else{
     currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
     // $(this).text('O');
+    $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //gun
     $(this).append('<img id="p2" src="http://s32.postimg.org/ogqmo2ytx/slash2.png">')
     $(this).fadeTo('fast',0);
 
@@ -534,6 +540,7 @@ function ifTie(){
 function playAgain() {
   $('button#resetBoard').on('click', function(){
       $('td').empty()
+      $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //gun
       turnCount = 0;
       $('td').fadeTo('slow',1);
 
@@ -565,6 +572,7 @@ function newGame() {
   $('button#startGame').on('click', function(){
     getPlayerNames();
     $('td').empty()
+    $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //gun
     turnCount = 0;
     $('td').fadeTo('slow',1);  //made all the ghosts reappear
 
