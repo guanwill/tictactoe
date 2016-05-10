@@ -77,6 +77,15 @@ body.append(resetScore);
 // $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //gun
 // $('body').css('cursor', 'url("http://s32.postimg.org/p815ukclt/swordcursor.png"),auto'); //sword
 
+//CLICK SOUND EFFECTS
+var gunSound = function() {
+  var gun = new Audio("gun.mp3");
+  gun.play();
+}
+var swordSound = function() {
+  var sword = new Audio("sword.mp3");
+  sword.play();
+}
 
 //CLICK FUNCTION TO INSERT MARKET AND CALLING THE CHECKWINNER FUNCTION EVERY TIME
 var turnCount = 0;
@@ -86,6 +95,7 @@ function startClicking() {
   if(turnCount % 2 === 0) {
     currentPlayerTurn.text("Your Turn, Ninja " + player2name +"!" );
     $('body').css('cursor', 'url("http://s32.postimg.org/p815ukclt/swordcursor.png"),auto');
+    gunSound();
 
     // $(this).text('X');
     // $(this).append('<img id="p1" src="http://s32.postimg.org/ic45bivr5/kisekae_2_prop_Ninja_star_by_zebuta_d8ru0p8.png">');
@@ -108,7 +118,9 @@ function startClicking() {
     currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
     // $(this).text('O');
     $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //gun
-    $(this).append('<img id="p2" src="http://s32.postimg.org/ogqmo2ytx/slash2.png">')
+    swordSound();
+
+    $(this).append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">')
     $(this).fadeTo('fast',0);
 
     $(this).off('click');
@@ -157,7 +169,7 @@ body.append(playerType);
 
 //RULES TEXT
 var rules = $('<div>').attr('id', 'rules')
-.text("Rules are Simple! The gunslinger will always attack first because ninjas are lazy, and the winning conditions are the same as tic-tac-toe. The catch here is, you will have to remember where you attack in order to win!")
+.text("Rules are Simple! The gunslinger will always attack first because ninjas are lazy, and the winning conditions are the same as tic-tac-toe. The catch here is, you will have to remember where you've attacked in order to win!")
 // .css({
 //   'min-width':'500px',
 //   'color':'lightyellow',
@@ -171,7 +183,7 @@ function checkWinner(player){
   //check row 1
   if( $('#board').find('.a1').length !== '' ){
     if( $('#board .1 .a1 #p1').length !=0 && $('#board .1 .a2 #p1').length !=0 && $('#board .1 .a3 #p1').length !=0 ){
-      alert(player +' is WINNER');
+      alert(player +' is the Winner!');
 
       $('#board').find('td').off('click');
       $('#go').css({
@@ -194,7 +206,7 @@ function checkWinner(player){
   //check row 2
   if( $('#board').find('.b1').length !== '' ){
     if( $('#board .2 .b1 #p1').length !=0 && $('#board .2 .b2 #p1').length !=0 && $('#board .2 .b3 #p1').length !=0 ){
-      alert(player +' is WINNER');
+      alert(player +' is the Winner!');
 
       $('#board').find('td').off('click');
       $('#go').css({
@@ -216,7 +228,7 @@ function checkWinner(player){
   //check row 3
   if( $('#board').find('.c1').length !== '' ){
     if( $('#board .3 .c1 #p1').length !=0 && $('#board .3 .c2 #p1').length !=0 && $('#board .3 .c3 #p1').length !=0 ){
-      alert(player +' is WINNER');
+      alert(player +' is the Winner!');
 
       $('#board').find('td').off('click');
       $('#go').css({
@@ -238,7 +250,7 @@ function checkWinner(player){
   //diagonal 1
   if( $('#board').find('.a1').length !== '' ){
     if( $('#board .1 .a1 #p1').length !=0 && $('#board .2 .b2 #p1').length !=0 && $('#board .3 .c3 #p1').length !=0 ){
-      alert(player +' is WINNER');
+      alert(player +' is the Winner!');
 
       $('#board').find('td').off('click');
       $('#go').css({
@@ -260,7 +272,7 @@ function checkWinner(player){
   //diagonal 2
   if( $('#board').find('.a3').length !== '' ){
     if( $('#board .1 .a3 #p1').length !=0 && $('#board .2 .b2 #p1').length !=0 && $('#board .3 .c1 #p1').length !=0 ){
-      alert(player +' is WINNER');
+      alert(player +' is the Winner!');
 
       $('#board').find('td').off('click');
       $('#go').css({
@@ -282,7 +294,7 @@ function checkWinner(player){
   //column 1
   if( $('#board').find('.a1').length !== '' ){
     if( $('#board .1 .a1 #p1').length !=0 && $('#board .2 .b1 #p1').length !=0 && $('#board .3 .c1 #p1').length !=0 ){
-      alert(player +' is WINNER');
+      alert(player +' is the Winner!');
 
       $('#board').find('td').off('click');
       $('#go').css({
@@ -304,7 +316,7 @@ function checkWinner(player){
   //column 2
   if( $('#board').find('.c1').length !== '' ){
     if( $('#board .1 .b2 #p1').length !=0 && $('#board .2 .b2 #p1').length !=0 && $('#board .3 .c2 #p1').length !=0 ){
-      alert(player +' is WINNER');
+      alert(player +' is the Winner!');
 
       $('#board').find('td').off('click');
       $('#go').css({
@@ -326,7 +338,7 @@ function checkWinner(player){
   //column 3
   if( $('#board').find('.c1').length !== '' ){
     if( $('#board .1 .a3 #p1').length !=0 && $('#board .2 .b3 #p1').length !=0 && $('#board .3 .c3 #p1').length !=0 ){
-      alert(player +' is WINNER');
+      alert(player +' is the Winner!');
 
       $('#board').find('td').off('click');
       $('#go').css({
@@ -348,7 +360,7 @@ function checkWinner(player){
   //CHECK WINNER WITH P2 IMAGE
     if( $('#board').find('.a1').length !== '' ){
       if( $('#board .1 .a1 #p2').length !=0 && $('#board .1 .a2 #p2').length !=0 && $('#board .1 .a3 #p2').length !=0 ){
-        alert(player +' is WINNER');
+        alert(player +' is the Winner!');
 
         $('#board').find('td').off('click');
         $('#go').css({
@@ -370,7 +382,7 @@ function checkWinner(player){
     //check row 2
     if( $('#board').find('.b1').length !== '' ){
       if( $('#board .2 .b1 #p2').length !=0 && $('#board .2 .b2 #p2').length !=0 && $('#board .2 .b3 #p2').length !=0 ){
-        alert(player +' is WINNER');
+        alert(player +' is the Winner!');
 
         $('#board').find('td').off('click');
         $('#go').css({
@@ -392,7 +404,7 @@ function checkWinner(player){
     //check row 3
     if( $('#board').find('.c1').length !== '' ){
       if( $('#board .3 .c1 #p2').length !=0 && $('#board .3 .c2 #p2').length !=0 && $('#board .3 .c3 #p2').length !=0 ){
-        alert(player +' is WINNER');
+        alert(player +' is the Winner!');
 
         $('#board').find('td').off('click');
         $('#go').css({
@@ -417,7 +429,7 @@ function checkWinner(player){
     //diagonal 1
     if( $('#board').find('.a1').length !== '' ){
       if( $('#board .1 .a1 #p2').length !=0 && $('#board .2 .b2 #p2').length !=0 && $('#board .3 .c3 #p2').length !=0 ){
-        alert(player +' is WINNER');
+        alert(player +' is the Winner!');
 
         $('#board').find('td').off('click');
         $('#go').css({
@@ -439,7 +451,7 @@ function checkWinner(player){
     //diagonal 2
     if( $('#board').find('.a3').length !== '' ){
       if( $('#board .1 .a3 #p2').length !=0 && $('#board .2 .b2 #p2').length !=0 && $('#board .3 .c1 #p2').length !=0 ){
-        alert(player +' is WINNER');
+        alert(player +' is the Winner!');
 
         $('#board').find('td').off('click');
         $('#go').css({
@@ -461,7 +473,7 @@ function checkWinner(player){
     //column 1
     if( $('#board').find('.a1').length !== '' ){
       if( $('#board .1 .a1 #p2').length !=0 && $('#board .2 .b1 #p2').length !=0 && $('#board .3 .c1 #p2').length !=0 ){
-        alert(player +' is WINNER');
+        alert(player +' is the Winner!');
 
         $('#board').find('td').off('click');
         $('#go').css({
@@ -483,7 +495,7 @@ function checkWinner(player){
     //column 2
     if( $('#board').find('.a2').length !== '' ){
       if( $('#board .1 .a2 #p2').length !=0 && $('#board .2 .b2 #p2').length !=0 && $('#board .3 .c2 #p2').length !=0 ){
-        alert(player +' is WINNER');
+        alert(player +' is the Winner!');
 
         $('#board').find('td').off('click');
         $('#go').css({
@@ -505,7 +517,7 @@ function checkWinner(player){
     //column 3
     if( $('#board').find('.c1').length !== '' ){
       if( $('#board .1 .a3 #p2').length !=0 && $('#board .2 .b3 #p2').length !=0 && $('#board .3 .c3 #p2').length !=0 ){
-        alert(player +' is WINNER');
+        alert(player +' is the Winner!');
 
         $('#board').find('td').off('click');
         $('#go').css({
