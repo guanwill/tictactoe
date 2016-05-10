@@ -2,15 +2,15 @@
 var body = $('body');
 //HEADING
 var welcome = $('<h1>')
-.text("Tic Tac Throw")
+.text("Tic Tac Attack")
 .css({
   'font-family': 'Dancing Script, cursive'
 })
 body.append(welcome);
 
 //DEFAULT PLAYER NAMES
-var player1name = 'Player One';
-var player2name = 'Player Two';
+var player1name = "";
+var player2name = "";
 // var player1nameText = $('<h3>').attr('id','player1nameText').text(player1name);
 // body.append(player1nameText);
 // var player2nameText = $('<h3>').attr('id', 'player2nameText').text(player2name);
@@ -18,7 +18,7 @@ var player2name = 'Player Two';
 
 //GET CURRENT PLAYER TURN
 var currentPlayerTurn = $('<h3>')
-.attr('id', 'go').text("Your Turn, Colonel " + player1name +"!" )
+.attr('id', 'go').text("Your Turn, Gunslinger " + player1name +"!" )
 .css({
   'font-family': 'Montserrat, cursive'
 })
@@ -81,9 +81,9 @@ var turnCount = 0;
 function startClicking() {
   $('#board').find('td').on('click', function(){
   if(turnCount % 2 === 0) {
-    currentPlayerTurn.text("Your Turn, Lieutenant " + player2name +"!" );
+    currentPlayerTurn.text("Your Turn, Ninja " + player2name +"!" );
     // $(this).text('X');
-    // $(this).append('<img id="p1" src="http://s32.postimg.org/ic45bivr5/kisekae_2_prop_Lieutenant_star_by_zebuta_d8ru0p8.png">');
+    // $(this).append('<img id="p1" src="http://s32.postimg.org/ic45bivr5/kisekae_2_prop_Ninja_star_by_zebuta_d8ru0p8.png">');
     $(this).append('<img id="p1" src="http://s32.postimg.org/iy0b3td5d/explosion.png">');
 
     $(this).fadeTo('slow',0);
@@ -100,7 +100,7 @@ function startClicking() {
       }
   }
   else{
-    currentPlayerTurn.text("Your Turn, Colonel " + player1name +"!" );
+    currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
     // $(this).text('O');
     $(this).append('<img id="p2" src="http://s32.postimg.org/ogqmo2ytx/slash2.png">')
     $(this).fadeTo('fast',0);
@@ -134,12 +134,21 @@ winCount.append(player1WinText);
 
 var player2WinText = $('<h3>')
 .attr('id','player2WinText')
-.text(player2name + " Wins: " + player2WinCount)
+.text(player2WinCount + " " + player2name)
 .css({
   'font-family': 'Montserrat, cursive'
 })
 winCount.append(player2WinText);
 body.append(winCount);
+
+//SHOW PLAYER CHARACTER
+var playerType = $('<div>').attr('id', 'playerType');
+var playerType1 = $('<img id="playerType1" src="http://s32.postimg.org/rp9mswl75/gunman.png">')
+var vs = $('<img id="vs" src="http://s32.postimg.org/93ilao2j5/vs1.png">')
+var playerType2 = $('<img id="playerType2" src="http://s32.postimg.org/9oojcbx3l/ninja.png">')
+playerType.append(playerType1, vs, playerType2);
+body.append(playerType);
+
 
 //CHECK WINNER WITH P1 IMAGE
 function checkWinner(player){
@@ -483,7 +492,7 @@ $('button#resetBoard').on('click', function(){
     turnCount = 0;
     $('td').fadeTo('slow',1);
 
-    currentPlayerTurn.text("Your Turn, Colonel " + player1name +"!" );
+    currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
     startClicking();
     console.log(turnCount);
 
@@ -506,9 +515,9 @@ $('button#startGame').on('click', function(){
   getPlayerNames();
   $('td').empty()
   turnCount = 0;
-  $('td').fadeTo('slow',1);
+  $('td').fadeTo('slow',1);  //made all the ghosts reappear
 
-  currentPlayerTurn.text("Your Turn, Colonel " + player1name +"!" );
+  currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
   console.log(turnCount);
   player1WinCount = 0;
   player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
@@ -517,6 +526,9 @@ $('button#startGame').on('click', function(){
   startClicking();
 
   $('h1').css({
+    'display': 'none'
+  })
+  $('#playerType').css({
     'display': 'none'
   })
   $('h3#go').css({
@@ -548,28 +560,24 @@ var getPlayerNames = function(){
   player2name = prompt('Player 2, what is your name?');
 
   //IF NO INPUT, USE DEFAULT NAME, OTHERWISE PUT PLAYER'S NAME
-  if (player1name == null){
-    // player1nameText.text('Player One');
+  if (player1name === null){
     player1WinText.text("Player One Wins: " +player1WinCount);
     currentPlayerTurn.text("Go, Player One!");
     player1name = "Player One";
   }
   else {
-    // player1nameText.text('Player One: ' + player1name);
     player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
-    currentPlayerTurn.text("Your Turn, Colonel " + player1name +"!" );
+    currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
 
   }
-  if (player2name == null) {
-    // player2nameText.text('Player Two');
+  if (player2name === null) {
     player2WinText.text("Player Two Wins: " + player2WinCount);
     currentPlayerTurn.text("Go, Player Two!");
-    player2name = "Player Two"
+    player2name = "Player Two";
   }
   else {
-    // player2nameText.text('Player Two: ' + player2name);
-    player2WinText.text(player2name + " Wins: " + player2WinCount);
-    currentPlayerTurn.text("Your Turn, Lieutenant " + player2name +"!" );
+    player2WinText.text(player2WinCount + " " + player2name);
+    currentPlayerTurn.text("Your Turn, Ninja " + player2name +"!" );
   }
 }
 
@@ -633,8 +641,4 @@ $('img').css({
 // ---------------EXTRA FEATURES---------------
 
 //WIRE FRAMING - sketching of what is needed/sketch of the design, etc
-//player1winCount
-//player2winCount
 //timer
-//new game button/ refresh button
-//display name
