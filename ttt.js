@@ -18,7 +18,7 @@ var player2name = 'Player Two';
 
 //GET CURRENT PLAYER TURN
 var currentPlayerTurn = $('<h3>')
-.attr('id', 'go').text("Your Turn, Hokage " + player1name +"!" )
+.attr('id', 'go').text("Your Turn, Colonel " + player1name +"!" )
 .css({
   'font-family': 'Montserrat, cursive'
 })
@@ -81,9 +81,11 @@ var turnCount = 0;
 function startClicking() {
   $('#board').find('td').on('click', function(){
   if(turnCount % 2 === 0) {
-    currentPlayerTurn.text("Your Turn, Ninja " + player2name +"!" );
+    currentPlayerTurn.text("Your Turn, Lieutenant " + player2name +"!" );
     // $(this).text('X');
-    $(this).append('<img id="p1" src="http://s32.postimg.org/ic45bivr5/kisekae_2_prop_ninja_star_by_zebuta_d8ru0p8.png">');
+    // $(this).append('<img id="p1" src="http://s32.postimg.org/ic45bivr5/kisekae_2_prop_Lieutenant_star_by_zebuta_d8ru0p8.png">');
+    $(this).append('<img id="p1" src="http://s32.postimg.org/iy0b3td5d/explosion.png">');
+
     $(this).fadeTo('slow',0);
 
 
@@ -98,10 +100,10 @@ function startClicking() {
       }
   }
   else{
-    currentPlayerTurn.text("Your Turn, Hokage " + player1name +"!" );
+    currentPlayerTurn.text("Your Turn, Colonel " + player1name +"!" );
     // $(this).text('O');
-    $(this).append('<img id="p2" src="http://s32.postimg.org/wbfljhzk1/shuriken_1.png">')
-    $(this).fadeTo('slow',0);
+    $(this).append('<img id="p2" src="http://s32.postimg.org/ogqmo2ytx/slash2.png">')
+    $(this).fadeTo('fast',0);
 
     $(this).off('click');
     checkWinner(player2name);
@@ -481,7 +483,7 @@ $('button#resetBoard').on('click', function(){
     turnCount = 0;
     $('td').fadeTo('slow',1);
 
-    currentPlayerTurn.text("Your Turn, Hokage " + player1name +"!" );
+    currentPlayerTurn.text("Your Turn, Colonel " + player1name +"!" );
     startClicking();
     console.log(turnCount);
 
@@ -506,7 +508,7 @@ $('button#startGame').on('click', function(){
   turnCount = 0;
   $('td').fadeTo('slow',1);
 
-  currentPlayerTurn.text("Your Turn, Hokage " + player1name +"!" );
+  currentPlayerTurn.text("Your Turn, Colonel " + player1name +"!" );
   console.log(turnCount);
   player1WinCount = 0;
   player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
@@ -555,7 +557,7 @@ var getPlayerNames = function(){
   else {
     // player1nameText.text('Player One: ' + player1name);
     player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
-    currentPlayerTurn.text("Your Turn, Hokage " + player1name +"!" );
+    currentPlayerTurn.text("Your Turn, Colonel " + player1name +"!" );
 
   }
   if (player2name == null) {
@@ -567,7 +569,7 @@ var getPlayerNames = function(){
   else {
     // player2nameText.text('Player Two: ' + player2name);
     player2WinText.text(player2name + " Wins: " + player2WinCount);
-    currentPlayerTurn.text("Your Turn, Ninja " + player2name +"!" );
+    currentPlayerTurn.text("Your Turn, Lieutenant " + player2name +"!" );
   }
 }
 
@@ -593,28 +595,32 @@ $('tr').css({
 $('td').css({
   'width':'200px',
   'height':'170px',
-  'border-style': 'solid',
-  'border-color':'brown',
+  // 'border-style': 'solid',
+  // 'border-color':'brown',
   'transition':'.2s ease-in-out',
   'margin': '10px',
   'border-radius': '100%',
-  'background':'url("http://www.targetsoftware.co.uk/images/target.png")',
+  // 'background':'url("http://www.targetsoftware.co.uk/images/target.png")',
+  'background':'url("http://s32.postimg.org/5u0nxi0r5/TRANSPARENT_GH.png")',
   'background-position': 'center',
+  'background-size': 'cover',
+
 })
 
 $('td').mouseover(function() {
   $(this).css({
     // 'background':'red',
     'transform': 'scale(1.05)',
-    'border':'2px solid red'
+    // 'border':'2px solid red'
   })
 })
 $('td').mouseout(function() {
   $(this).css({
-    'background':'url("http://www.targetsoftware.co.uk/images/target.png")',
+    'background':'url("http://s32.postimg.org/5u0nxi0r5/TRANSPARENT_GH.png" no-repeat)',
     'background-position': 'center',
+    'background-size': 'cover',
     'transform':'none',
-    'border':'3px solid brown',
+    // 'border':'3px solid brown',
   })
 })
 

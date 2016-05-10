@@ -28,7 +28,12 @@ h1{
     2px 2px 0 #440a0a;
 }
 #go{
-  color: lightgrey;
+  color: brown;
+  text-shadow:
+    -2px -2px 0 #440a0a,
+    2px -2px 0 #440a0a,
+    -2px 2px 0 #440a0a,
+    2px 2px 0 #440a0a;
 }
 button{
   padding: 10px;
