@@ -111,19 +111,19 @@ function startClicking() {
   turnCount ++
   })
 }
-// startClicking();
 
 //GETTING PLAYER WINS;
 var player1WinCount = 0;
 var player2WinCount = 0;
 
+var winCount = $('<div>').attr('id', 'winCount');
 var player1WinText = $('<h3>')
 .attr('id','player1WinText')
-.text(player1name + " Wins: " +player1WinCount)
+.text(player1name + " " +" " + player1WinCount +" : ")
 .css({
   'font-family': 'Montserrat, cursive'
 })
-body.append(player1WinText);
+winCount.append(player1WinText);
 
 var player2WinText = $('<h3>')
 .attr('id','player2WinText')
@@ -131,7 +131,8 @@ var player2WinText = $('<h3>')
 .css({
   'font-family': 'Montserrat, cursive'
 })
-body.append(player2WinText);
+winCount.append(player2WinText);
+body.append(winCount);
 
 //CHECK WINNER WITH P1 IMAGE
 function checkWinner(player){
@@ -147,11 +148,11 @@ function checkWinner(player){
 
       if(player === player1name){
         player1WinCount++;
-        player1WinText.text(player1name + " Wins: " +player1WinCount);
+        player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
       }
       else if (player == player2name){
         player2WinCount++;
-        player2WinText.text(player2name + " Wins: " +player2WinCount);
+        player2WinText.text(player2WinCount + " " + player2name);
       }
     }
   }
@@ -167,11 +168,11 @@ function checkWinner(player){
 
       if(player === player1name){
         player1WinCount++;
-        player1WinText.text(player1name + " Wins: " +player1WinCount);
+        player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
       }
       else if (player == player2name){
         player2WinCount++;
-        player2WinText.text(player2name + " Wins: " +player2WinCount);
+        player2WinText.text(player2WinCount + " " + player2name);
       }
     }
   }
@@ -184,17 +185,14 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
-      $('#go').css({
-        'visibility':'hidden'
-      })
 
       if(player === player1name){
         player1WinCount++;
-        player1WinText.text(player1name + " Wins: " +player1WinCount);
+        player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
       }
       else if (player == player2name){
         player2WinCount++;
-        player2WinText.text(player2name + " Wins: " +player2WinCount);
+        player2WinText.text(player2WinCount + " " + player2name);
       }
     }
   }
@@ -210,11 +208,11 @@ function checkWinner(player){
 
       if(player === player1name){
         player1WinCount++;
-        player1WinText.text(player1name + " Wins: " +player1WinCount);
+        player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
       }
       else if (player == player2name){
         player2WinCount++;
-        player2WinText.text(player2name + " Wins: " +player2WinCount);
+        player2WinText.text(player2WinCount + " " + player2name);
       }
     }
   }
@@ -230,11 +228,11 @@ function checkWinner(player){
 
       if(player === player1name){
         player1WinCount++;
-        player1WinText.text(player1name + " Wins: " +player1WinCount);
+        player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
       }
       else if (player == player2name){
         player2WinCount++;
-        player2WinText.text(player2name + " Wins: " +player2WinCount);
+        player2WinText.text(player2WinCount + " " + player2name);
       }
     }
   }
@@ -250,11 +248,11 @@ function checkWinner(player){
 
       if(player === player1name){
         player1WinCount++;
-        player1WinText.text(player1name + " Wins: " +player1WinCount);
+        player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
       }
       else if (player == player2name){
         player2WinCount++;
-        player2WinText.text(player2name + " Wins: " +player2WinCount);
+        player2WinText.text(player2WinCount + " " + player2name);
       }
     }
   }
@@ -270,11 +268,11 @@ function checkWinner(player){
 
       if(player === player1name){
         player1WinCount++;
-        player1WinText.text(player1name + " Wins: " +player1WinCount);
+        player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
       }
       else if (player == player2name){
         player2WinCount++;
-        player2WinText.text(player2name + " Wins: " +player2WinCount);
+        player2WinText.text(player2WinCount + " " + player2name);
       }
     }
   }
@@ -290,11 +288,11 @@ function checkWinner(player){
 
       if(player === player1name){
         player1WinCount++;
-        player1WinText.text(player1name + " Wins: " +player1WinCount);
+        player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
       }
       else if (player == player2name){
         player2WinCount++;
-        player2WinText.text(player2name + " Wins: " +player2WinCount);
+        player2WinText.text(player2WinCount + " " + player2name);
       }
     }
   }
@@ -310,11 +308,11 @@ function checkWinner(player){
 
         if(player === player1name){
           player1WinCount++;
-          player1WinText.text(player1name + " Wins: " +player1WinCount);
+          player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
         }
         else if (player == player2name){
           player2WinCount++;
-          player2WinText.text(player2name + " Wins: " +player2WinCount);
+          player2WinText.text(player2WinCount + " " + player2name);
         }
       }
     }
@@ -330,11 +328,11 @@ function checkWinner(player){
 
         if(player === player1name){
           player1WinCount++;
-          player1WinText.text(player1name + " Wins: " +player1WinCount);
+          player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
         }
         else if (player == player2name){
           player2WinCount++;
-          player2WinText.text(player2name + " Wins: " +player2WinCount);
+          player2WinText.text(player2WinCount + " " + player2name);
         }
       }
     }
@@ -353,11 +351,11 @@ function checkWinner(player){
 
         if(player === player1name){
           player1WinCount++;
-          player1WinText.text(player1name + " Wins: " +player1WinCount);
+          player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
         }
         else if (player == player2name){
           player2WinCount++;
-          player2WinText.text(player2name + " Wins: " +player2WinCount);
+          player2WinText.text(player2WinCount + " " + player2name);
         }
       }
     }
@@ -373,11 +371,11 @@ function checkWinner(player){
 
         if(player === player1name){
           player1WinCount++;
-          player1WinText.text(player1name + " Wins: " +player1WinCount);
+          player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
         }
         else if (player == player2name){
           player2WinCount++;
-          player2WinText.text(player2name + " Wins: " +player2WinCount);
+          player2WinText.text(player2WinCount + " " + player2name);
         }
       }
     }
@@ -393,11 +391,11 @@ function checkWinner(player){
 
         if(player === player1name){
           player1WinCount++;
-          player1WinText.text(player1name + " Wins: " +player1WinCount);
+          player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
         }
         else if (player == player2name){
           player2WinCount++;
-          player2WinText.text(player2name + " Wins: " +player2WinCount);
+          player2WinText.text(player2WinCount + " " + player2name);
         }
       }
     }
@@ -413,11 +411,11 @@ function checkWinner(player){
 
         if(player === player1name){
           player1WinCount++;
-          player1WinText.text(player1name + " Wins: " +player1WinCount);
+          player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
         }
         else if (player == player2name){
           player2WinCount++;
-          player2WinText.text(player2name + " Wins: " +player2WinCount);
+          player2WinText.text(player2WinCount + " " + player2name);
         }
       }
     }
@@ -433,11 +431,11 @@ function checkWinner(player){
 
         if(player === player1name){
           player1WinCount++;
-          player1WinText.text(player1name + " Wins: " +player1WinCount);
+          player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
         }
         else if (player == player2name){
           player2WinCount++;
-          player2WinText.text(player2name + " Wins: " +player2WinCount);
+          player2WinText.text(player2WinCount + " " + player2name);
         }
       }
     }
@@ -453,11 +451,11 @@ function checkWinner(player){
 
         if(player === player1name){
           player1WinCount++;
-          player1WinText.text(player1name + " Wins: " +player1WinCount);
+          player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
         }
         else if (player == player2name){
           player2WinCount++;
-          player2WinText.text(player2name + " Wins: " +player2WinCount);
+          player2WinText.text(player2WinCount + " " + player2name);
         }
       }
     }
@@ -488,26 +486,38 @@ $('button#resetBoard').on('click', function(){
 //RESET SCORE
 $('button#resetScore').on('click', function(){
   player1WinCount = 0;
-  player1WinText.text(player1name + " Wins: " +player1WinCount);
+  player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
   player2WinCount = 0;
-  player2WinText.text(player2name + " Wins: " +player2WinCount);
+  player2WinText.text(player2WinCount + " " + player2name);
 })
 
 //START GAME
 $('button#startGame').on('click', function(){
   getPlayerNames();
-  startClicking();
   $('td').empty()
   turnCount = 0;
   currentPlayerTurn.text("Your Turn, Hokage " + player1name +"!" );
   console.log(turnCount);
   player1WinCount = 0;
-  player1WinText.text(player1name + " Wins: " +player1WinCount);
+  player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
   player2WinCount = 0;
-  player2WinText.text(player2name + " Wins: " +player2WinCount);
+  player2WinText.text(player2WinCount + " " + player2name);
+  startClicking();
 
-  $('h3').css({
+  $('h1').css({
+    'display': 'none'
+  })
+  $('h3#go').css({
     'display': 'block'
+  })
+  $('#winCount').css({
+    'display': 'block'
+  })
+  $('#player1WinText').css({
+    'display': 'inline-block'
+  })
+  $('#player2WinText').css({
+    'display': 'inline-block'
   })
   $('table').css({
     'display': 'block'
@@ -534,7 +544,7 @@ var getPlayerNames = function(){
   }
   else {
     // player1nameText.text('Player One: ' + player1name);
-    player1WinText.text(player1name + " Wins: " +player1WinCount);
+    player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
     currentPlayerTurn.text("Your Turn, Hokage " + player1name +"!" );
 
   }
@@ -560,7 +570,7 @@ board.css({
   'height':'600px',
   'border':'10px outset rgb(47,5,5)',
   'margin': '0 auto',
-  'background': 'url("http://online.fliphtml5.com/aohj/rsyp/files/extfile/innerMainbgImgUrl.jpg")'
+  'background': 'url("http://wood-center.gr/Photos/bg.jpg") no-repeat center center fixed'
 })
 
 $('tr').css({
