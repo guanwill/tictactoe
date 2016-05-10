@@ -119,7 +119,7 @@ function startClicking() {
   })
 }
 
-//GETTING PLAYER WINS;
+//COUNTS PLAYER WINS;
 var player1WinCount = 0;
 var player2WinCount = 0;
 
@@ -149,6 +149,16 @@ var playerType2 = $('<img id="playerType2" src="http://s32.postimg.org/9oojcbx3l
 playerType.append(playerType1, vs, playerType2);
 body.append(playerType);
 
+//RULES TEXT
+var rules = $('<div>').attr('id', 'rules')
+.text("Rules are Simple! The gunslinger will always attack first because ninjas are lazy, and the winning conditions are the same as tic-tac-toe. The catch here is, you will have to remember where you attack in order to win!")
+// .css({
+//   'min-width':'500px',
+//   'color':'lightyellow',
+//   'margin':'0 auto',
+//   'font-family':'Montserrat',
+// })
+body.append(rules);
 
 //CHECK WINNER WITH P1 IMAGE
 function checkWinner(player){
@@ -161,6 +171,9 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
+
+      playAgain();
+      newGame();
 
       if(player === player1name){
         player1WinCount++;
@@ -181,6 +194,8 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
+      playAgain();
+      newGame();
 
       if(player === player1name){
         player1WinCount++;
@@ -201,6 +216,8 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
+      playAgain();
+      newGame();
 
       if(player === player1name){
         player1WinCount++;
@@ -221,6 +238,8 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
+      playAgain();
+      newGame();
 
       if(player === player1name){
         player1WinCount++;
@@ -241,6 +260,8 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
+      playAgain();
+      newGame();
 
       if(player === player1name){
         player1WinCount++;
@@ -261,6 +282,8 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
+      playAgain();
+      newGame();
 
       if(player === player1name){
         player1WinCount++;
@@ -281,6 +304,8 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
+      playAgain();
+      newGame();
 
       if(player === player1name){
         player1WinCount++;
@@ -301,6 +326,8 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
+      playAgain();
+      newGame();
 
       if(player === player1name){
         player1WinCount++;
@@ -321,6 +348,8 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
+        playAgain();
+        newGame();
 
         if(player === player1name){
           player1WinCount++;
@@ -341,6 +370,8 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
+        playAgain();
+        newGame();
 
         if(player === player1name){
           player1WinCount++;
@@ -364,6 +395,8 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
+        playAgain();
+        newGame();
 
         if(player === player1name){
           player1WinCount++;
@@ -384,6 +417,8 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
+        playAgain();
+        newGame();
 
         if(player === player1name){
           player1WinCount++;
@@ -404,6 +439,8 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
+        playAgain();
+        newGame();
 
         if(player === player1name){
           player1WinCount++;
@@ -424,6 +461,8 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
+        playAgain();
+        newGame();
 
         if(player === player1name){
           player1WinCount++;
@@ -444,6 +483,8 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
+        playAgain();
+        newGame();
 
         if(player === player1name){
           player1WinCount++;
@@ -464,6 +505,8 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
+        playAgain();
+        newGame();
 
         if(player === player1name){
           player1WinCount++;
@@ -477,29 +520,35 @@ function checkWinner(player){
     }
 }
 
-
-
 // // IF TIE
 function ifTie(){
   if (turnCount === 8){
+    playAgain();
+    newGame();
     alert('ROUND FINISHED!');
+
   }
 }
 
 //RESET BOARD TO PLAY AGAIN
-$('button#resetBoard').on('click', function(){
-    $('td').empty()
-    turnCount = 0;
-    $('td').fadeTo('slow',1);
+function playAgain() {
+  $('button#resetBoard').on('click', function(){
+      $('td').empty()
+      turnCount = 0;
+      $('td').fadeTo('slow',1);
 
-    currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
-    startClicking();
-    console.log(turnCount);
+      currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
+      startClicking();
+      console.log(turnCount);
 
-    $('#go').css({
-      'visibility':'visible'
-    })
-})
+      $('#go').css({
+        'visibility':'visible'
+      })
+
+      $('button#startGame').off('click')
+      $('button#resetBoard').off('click')
+  })
+}
 
 //RESET SCORE
 $('button#resetScore').on('click', function(){
@@ -508,51 +557,61 @@ $('button#resetScore').on('click', function(){
   player2WinCount = 0;
   player2WinText.text(player2WinCount + " " + player2name);
 
+
 })
 
 //START GAME
-$('button#startGame').on('click', function(){
-  getPlayerNames();
-  $('td').empty()
-  turnCount = 0;
-  $('td').fadeTo('slow',1);  //made all the ghosts reappear
+function newGame() {
+  $('button#startGame').on('click', function(){
+    getPlayerNames();
+    $('td').empty()
+    turnCount = 0;
+    $('td').fadeTo('slow',1);  //made all the ghosts reappear
 
-  currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
-  console.log(turnCount);
-  player1WinCount = 0;
-  player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
-  player2WinCount = 0;
-  player2WinText.text(player2WinCount + " " + player2name);
-  startClicking();
+    currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
+    console.log(turnCount);
+    player1WinCount = 0;
+    player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
+    player2WinCount = 0;
+    player2WinText.text(player2WinCount + " " + player2name);
+    startClicking();
 
-  $('h1').css({
-    'display': 'none'
+    $('#rules').css({
+      'display': 'none'
+    })
+    $('h1').css({
+      'display': 'none'
+    })
+    $('#playerType').css({
+      'display': 'none'
+    })
+    $('h3#go').css({
+      'display': 'block'
+    })
+    $('#winCount').css({
+      'display': 'block'
+    })
+    $('#player1WinText').css({
+      'display': 'inline-block'
+    })
+    $('#player2WinText').css({
+      'display': 'inline-block'
+    })
+    $('table').css({
+      'display': 'block'
+    })
+    $('button#resetBoard').css({
+      'display': 'inline-block'
+    })
+    $('button#resetScore').css({
+      'display': 'inline-block'
+    })
+
+    $('button#startGame').off('click')
+    $('button#resetBoard').off('click')
   })
-  $('#playerType').css({
-    'display': 'none'
-  })
-  $('h3#go').css({
-    'display': 'block'
-  })
-  $('#winCount').css({
-    'display': 'block'
-  })
-  $('#player1WinText').css({
-    'display': 'inline-block'
-  })
-  $('#player2WinText').css({
-    'display': 'inline-block'
-  })
-  $('table').css({
-    'display': 'block'
-  })
-  $('button#resetBoard').css({
-    'display': 'inline-block'
-  })
-  $('button#resetScore').css({
-    'display': 'inline-block'
-  })
-})
+}
+newGame();
 
 //GRAB SPECIFIC PLAYER NAMES WHEN YOU CLICK START GAME
 var getPlayerNames = function(){
