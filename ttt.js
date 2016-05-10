@@ -1,7 +1,11 @@
 //----------HTML ELEMENTS-----------
 var body = $('body');
 //HEADING
-var welcome = $('<h1>').text("TIC TAC THROW");
+var welcome = $('<h1>')
+.text("Tic Tac Throw")
+.css({
+  'font-family': 'Dancing Script, cursive'
+})
 body.append(welcome);
 
 //DEFAULT PLAYER NAMES
@@ -13,7 +17,11 @@ var player2name = 'Player Two';
 // body.append(player2nameText);
 
 //GET CURRENT PLAYER TURN
-var currentPlayerTurn = $('<h3>').attr('id', 'go').text("Go, " + player1name);
+var currentPlayerTurn = $('<h3>')
+.attr('id', 'go').text("Your Turn, Hokage " + player1name +"!" )
+.css({
+  'font-family': 'Montserrat, cursive'
+})
 body.append(currentPlayerTurn);
 
 //CREATING BOARD/GRID
@@ -73,7 +81,7 @@ var turnCount = 0;
 function startClicking() {
   $('#board').find('td').on('click', function(){
   if(turnCount % 2 === 0) {
-    currentPlayerTurn.text("Go, " + player2name);
+    currentPlayerTurn.text("Your Turn, Ninja " + player2name +"!" );
     // $(this).text('X');
     $(this).append('<img id="p1" src="http://s32.postimg.org/ic45bivr5/kisekae_2_prop_ninja_star_by_zebuta_d8ru0p8.png">')
     $(this).off('click');
@@ -87,7 +95,7 @@ function startClicking() {
       }
   }
   else{
-    currentPlayerTurn.text("Go, " + player1name);
+    currentPlayerTurn.text("Your Turn, Hokage " + player1name +"!" );
     // $(this).text('O');
     $(this).append('<img id="p2" src="http://s32.postimg.org/wbfljhzk1/shuriken_1.png">')
     $(this).off('click');
@@ -109,16 +117,21 @@ function startClicking() {
 var player1WinCount = 0;
 var player2WinCount = 0;
 
-var player1WinText = $('<h3>').attr('id','player1WinText').text(player1name + " Wins: " +player1WinCount);
+var player1WinText = $('<h3>')
+.attr('id','player1WinText')
+.text(player1name + " Wins: " +player1WinCount)
+.css({
+  'font-family': 'Montserrat, cursive'
+})
 body.append(player1WinText);
-var player2WinText = $('<h3>').attr('id','player2WinText').text(player2name + " Wins: " + player2WinCount);
+
+var player2WinText = $('<h3>')
+.attr('id','player2WinText')
+.text(player2name + " Wins: " + player2WinCount)
+.css({
+  'font-family': 'Montserrat, cursive'
+})
 body.append(player2WinText);
-
-// //TEST IMAGE CONDITION
-// if( $('#board .a1 #p1').length !== '' ){
-//   if( $('#board').find('.a1').attr('src') === $('#board').find('.a2').attr('src') && $('#board').find('.a1').attr('src') === $('#board').find('.a3').attr('src') ){
-//     alert(player +' is WINNER');
-
 
 //CHECK WINNER WITH P1 IMAGE
 function checkWinner(player){
@@ -285,9 +298,174 @@ function checkWinner(player){
       }
     }
   }
+  //CHECK WINNER WITH P2 IMAGE
+    if( $('#board').find('.a1').length !== '' ){
+      if( $('#board .1 .a1 #p2').length !=0 && $('#board .1 .a2 #p2').length !=0 && $('#board .1 .a3 #p2').length !=0 ){
+        alert(player +' is WINNER');
+
+        $('#board').find('td').off('click');
+        $('#go').css({
+          'visibility':'hidden'
+        })
+
+        if(player === player1name){
+          player1WinCount++;
+          player1WinText.text(player1name + " Wins: " +player1WinCount);
+        }
+        else if (player == player2name){
+          player2WinCount++;
+          player2WinText.text(player2name + " Wins: " +player2WinCount);
+        }
+      }
+    }
+    //check row 2
+    if( $('#board').find('.b1').length !== '' ){
+      if( $('#board .2 .b1 #p2').length !=0 && $('#board .2 .b2 #p2').length !=0 && $('#board .2 .b3 #p2').length !=0 ){
+        alert(player +' is WINNER');
+
+        $('#board').find('td').off('click');
+        $('#go').css({
+          'visibility':'hidden'
+        })
+
+        if(player === player1name){
+          player1WinCount++;
+          player1WinText.text(player1name + " Wins: " +player1WinCount);
+        }
+        else if (player == player2name){
+          player2WinCount++;
+          player2WinText.text(player2name + " Wins: " +player2WinCount);
+        }
+      }
+    }
+    //check row 3
+    if( $('#board').find('.c1').length !== '' ){
+      if( $('#board .3 .c1 #p2').length !=0 && $('#board .3 .c2 #p2').length !=0 && $('#board .3 .c3 #p2').length !=0 ){
+        alert(player +' is WINNER');
+
+        $('#board').find('td').off('click');
+        $('#go').css({
+          'visibility':'hidden'
+        })
+        $('#go').css({
+          'visibility':'hidden'
+        })
+
+        if(player === player1name){
+          player1WinCount++;
+          player1WinText.text(player1name + " Wins: " +player1WinCount);
+        }
+        else if (player == player2name){
+          player2WinCount++;
+          player2WinText.text(player2name + " Wins: " +player2WinCount);
+        }
+      }
+    }
+    //diagonal 1
+    if( $('#board').find('.a1').length !== '' ){
+      if( $('#board .1 .a1 #p2').length !=0 && $('#board .2 .b2 #p2').length !=0 && $('#board .3 .c3 #p2').length !=0 ){
+        alert(player +' is WINNER');
+
+        $('#board').find('td').off('click');
+        $('#go').css({
+          'visibility':'hidden'
+        })
+
+        if(player === player1name){
+          player1WinCount++;
+          player1WinText.text(player1name + " Wins: " +player1WinCount);
+        }
+        else if (player == player2name){
+          player2WinCount++;
+          player2WinText.text(player2name + " Wins: " +player2WinCount);
+        }
+      }
+    }
+    //diagonal 2
+    if( $('#board').find('.a3').length !== '' ){
+      if( $('#board .1 .a3 #p2').length !=0 && $('#board .2 .b2 #p2').length !=0 && $('#board .3 .c1 #p2').length !=0 ){
+        alert(player +' is WINNER');
+
+        $('#board').find('td').off('click');
+        $('#go').css({
+          'visibility':'hidden'
+        })
+
+        if(player === player1name){
+          player1WinCount++;
+          player1WinText.text(player1name + " Wins: " +player1WinCount);
+        }
+        else if (player == player2name){
+          player2WinCount++;
+          player2WinText.text(player2name + " Wins: " +player2WinCount);
+        }
+      }
+    }
+    //column 1
+    if( $('#board').find('.a1').length !== '' ){
+      if( $('#board .1 .a1 #p2').length !=0 && $('#board .2 .b1 #p2').length !=0 && $('#board .3 .c1 #p2').length !=0 ){
+        alert(player +' is WINNER');
+
+        $('#board').find('td').off('click');
+        $('#go').css({
+          'visibility':'hidden'
+        })
+
+        if(player === player1name){
+          player1WinCount++;
+          player1WinText.text(player1name + " Wins: " +player1WinCount);
+        }
+        else if (player == player2name){
+          player2WinCount++;
+          player2WinText.text(player2name + " Wins: " +player2WinCount);
+        }
+      }
+    }
+    //column 2
+    if( $('#board').find('.c1').length !== '' ){
+      if( $('#board .1 .b2 #p2').length !=0 && $('#board .2 .b2 #p2').length !=0 && $('#board .3 .c2 #p2').length !=0 ){
+        alert(player +' is WINNER');
+
+        $('#board').find('td').off('click');
+        $('#go').css({
+          'visibility':'hidden'
+        })
+
+        if(player === player1name){
+          player1WinCount++;
+          player1WinText.text(player1name + " Wins: " +player1WinCount);
+        }
+        else if (player == player2name){
+          player2WinCount++;
+          player2WinText.text(player2name + " Wins: " +player2WinCount);
+        }
+      }
+    }
+    //column 3
+    if( $('#board').find('.c1').length !== '' ){
+      if( $('#board .1 .a3 #p2').length !=0 && $('#board .2 .b3 #p2').length !=0 && $('#board .3 .c3 #p2').length !=0 ){
+        alert(player +' is WINNER');
+
+        $('#board').find('td').off('click');
+        $('#go').css({
+          'visibility':'hidden'
+        })
+
+        if(player === player1name){
+          player1WinCount++;
+          player1WinText.text(player1name + " Wins: " +player1WinCount);
+        }
+        else if (player == player2name){
+          player2WinCount++;
+          player2WinText.text(player2name + " Wins: " +player2WinCount);
+        }
+      }
+    }
 }
 
-// // IF TIE  ---------------DOESNT WORK-----------
+
+
+// // IF TIE
 function ifTie(){
   if (turnCount === 8){
     alert('ROUND FINISHED!');
@@ -298,7 +476,7 @@ function ifTie(){
 $('button#resetBoard').on('click', function(){
     $('td').empty()
     turnCount = 0;
-    currentPlayerTurn.text("Go, " + player1name);
+    currentPlayerTurn.text("Your Turn, Hokage " + player1name +"!" );
     startClicking();
     console.log(turnCount);
 
@@ -321,7 +499,7 @@ $('button#startGame').on('click', function(){
   startClicking();
   $('td').empty()
   turnCount = 0;
-  currentPlayerTurn.text("Go, " + player1name);
+  currentPlayerTurn.text("Your Turn, Hokage " + player1name +"!" );
   console.log(turnCount);
   player1WinCount = 0;
   player1WinText.text(player1name + " Wins: " +player1WinCount);
@@ -352,23 +530,24 @@ var getPlayerNames = function(){
     // player1nameText.text('Player One');
     player1WinText.text("Player One Wins: " +player1WinCount);
     currentPlayerTurn.text("Go, Player One!");
+    player1name = "Player One";
   }
   else {
     // player1nameText.text('Player One: ' + player1name);
     player1WinText.text(player1name + " Wins: " +player1WinCount);
-    currentPlayerTurn.text("Go, " + player1name);
+    currentPlayerTurn.text("Your Turn, Hokage " + player1name +"!" );
 
   }
   if (player2name == null) {
     // player2nameText.text('Player Two');
     player2WinText.text("Player Two Wins: " + player2WinCount);
     currentPlayerTurn.text("Go, Player Two!");
-
+    player2name = "Player Two"
   }
   else {
     // player2nameText.text('Player Two: ' + player2name);
     player2WinText.text(player2name + " Wins: " + player2WinCount);
-    currentPlayerTurn.text("Go, " + player2name);
+    currentPlayerTurn.text("Your Turn, Ninja " + player2name +"!" );
   }
 }
 

@@ -19,5 +19,30 @@ html{
   background-size: cover;
 }
 h1{
-  color:white;
+  color: lightyellow;
+  font-size: 50px;
+}
+#go{
+  color: lightgrey;
+}
+button{
+  padding: 10px;
+  margin: 30px 10px 10px 10px;
+  color: brown;
+  background: yellow;
+  border-radius: 5px;
+}
+#player1WinText, #player2WinText{
+  color: lightyellow;
+  text-align: justify;
+  position: absolute;
+  top: 10px;
+  /*flex: center;*/
+}
+#player2WinText{
+  color: lightyellow;
+  text-align: justify;
+  position: absolute;
+  top: 40px;
+  /*flex: center;*/
 }
