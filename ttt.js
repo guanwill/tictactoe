@@ -11,7 +11,7 @@ body.append(welcome);
 //----------DEFAULT PLAYER NAMES----------
 var player1name = "";
 var player2name = "";
-var computerName = "";
+var  player2name = "";
 
 // This displays player names on the board. Not going to do it.
 // var player1nameText = $('<h3>').attr('id','player1nameText').text(player1name);
@@ -52,11 +52,18 @@ var c2 = $('<td>').addClass('c2');
 var c3 = $('<td>').addClass('c3');
 row3.append(c1, c2, c3);
 
-//----------CREATING NEW GAME BUTTON----------
+//----------CREATING NEW GAME BUTTON FOR SP----------
+var startGameSP = $('<button>')
+  .attr('id', 'startGameSP')
+  .attr('type', 'button')
+  .text('SINGLE PLAYER');
+  body.append(startGameSP);
+
+//----------CREATING NEW GAME BUTTON FOR TWO PLAYERS----------
 var startGame = $('<button>')
   .attr('id', 'startGame')
   .attr('type', 'button')
-  .text('NEW GAME');
+  .text('MULTIPLAYER');
   body.append(startGame);
 
 //----------CREATING PLAY AGAIN BUTTON----------
@@ -118,7 +125,64 @@ var rules = $('<div>').attr('id', 'rules')
 .text("Rules are Simple! The gunslinger will always attack first because ninjas are lazy, and the winning conditions are the same as tic-tac-toe. The catch here is, you will have to remember where you've attacked in order to win!")
 body.append(rules);
 
-//----------START NEW GAME----------
+//----------START NEW GAME FOR SINGLE PLAYER----------
+function newGameSP() {
+  $('button#startGameSP').on('click', function(){  //when you click on new game button,
+    getNamesforSP(); //calls the function that prompts players to input their names
+    $('td').empty()  //all td becomes empty
+    $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //cursor is the gun cursor when game starts
+    turnCount = 0;  //turn count starts from 0
+    $('td').fadeTo('slow',1);  //makes all the ghosts appear, if they already aren't
+    startClickingSP();  //activates the clicking board function
+    $('button#startGame').off('click') //immediately disables new game button until game finish or winner declared
+    $('button#resetBoard').off('click') //immediately disables play again button until game finish or winner declared
+    $('button#startGameSP').off('click') //immediately disables new game button until game finish or winner declared
+
+
+    currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );  //displays current player's turn
+    console.log(turnCount); //check if turn count is 0 when new game button is clicked on
+
+    player1WinCount = 0; //resets player 1 win count
+    player1WinText.text(player1name + " " +" " + player1WinCount +" : "); //updates the win count display
+    player2WinCount = 0;  //resets player 2 win count
+    player2WinText.text(player2WinCount + " " + player2name); //updates the win count display
+
+    //more rules when you start a new game
+    $('#rules').css({  //make rules disappear
+      'display': 'none'
+    })
+    $('h1').css({  //make heading disappear
+      'display': 'none'
+    })
+    $('#playerType').css({ //make player character images disappear
+      'display': 'none'
+    })
+    $('h3#go').css({ //make the display current player turn appear (as earlier, when game finishes or winner declared, it hides it)
+      'display': 'block'
+    })
+    $('#winCount').css({
+      'display': 'block'
+    })
+    $('#player1WinText').css({
+      'display': 'inline-block'
+    })
+    $('#player2WinText').css({
+      'display': 'inline-block'
+    })
+    $('table').css({
+      'display': 'block'  //by default it displays none, we making it appear when new game button is clicked on
+    })
+    $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+      'display': 'inline-block'
+    })
+    $('button#resetScore').css({ //by default it displays none, we making it appear when new game button is clicked on
+      'display': 'inline-block'
+    })
+  })
+}
+newGameSP();  //declare new game function straight away when website loads
+
+//----------START NEW GAME FOR MULTIPLAYER----------
 function newGame() {
   $('button#startGame').on('click', function(){  //when you click on new game button,
     getPlayerNames(); //calls the function that prompts players to input their names
@@ -129,6 +193,7 @@ function newGame() {
     startClicking();  //activates the clicking board function
     $('button#startGame').off('click') //immediately disables new game button until game finish or winner declared
     $('button#resetBoard').off('click') //immediately disables play again button until game finish or winner declared
+    $('button#startGameSP').off('click') //immediately disables new game button until game finish or winner declared
 
     currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );  //displays current player's turn
     console.log(turnCount); //check if turn count is 0 when new game button is clicked on
@@ -203,7 +268,7 @@ var getPlayerNames = function(){
 //----------GRAB NAMES FOR VS AI----------
 var getNamesforSP = function(){
   player1name = prompt('Player 1, what is your name?');
-  computerName = prompt('Player 2, what is your name?');
+   player2name = prompt('Give the AI a name!');
 
   //if no input, use default name, otherwise put player's name
   if (player1name === null){
@@ -216,14 +281,14 @@ var getNamesforSP = function(){
     currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
 
   }
-  if (computerName === null) {
+  if ( player2name === null) {
     player2WinText.text(player2WinCount + " " + "Computer");
     currentPlayerTurn.text("Go, Player Two!");
     player2name = "Player Two";
   }
   else {
-    player2WinText.text(player2WinCount + " " + computerName);
-    currentPlayerTurn.text("Your Turn, Ninja " + computerName +"!" );
+    player2WinText.text(player2WinCount + " " +  player2name);
+    currentPlayerTurn.text("Your Turn, Ninja " +  player2name +"!" );
   }
 }
 
@@ -243,6 +308,8 @@ function playAgain() {
 
       $('button#startGame').off('click') //Once play again has been clicked, new game button disables until game ends,
       $('button#resetBoard').off('click')//play again button is also disabled until game ends
+      $('button#startGameSP').off('click') //immediately disables new game button until game finish or winner declared
+
   })
 }
 
@@ -254,10 +321,10 @@ $('button#resetScore').on('click', function(){
   player2WinText.text(player2WinCount + " " + player2name);
 })
 
-//----------CLICK FUNCTION----------
+//----------CLICK FUNCTION FOR SP----------
 var turnCount = 0;
 
-function startClicking() {
+function startClickingSP() {
   $('#board').find('td').on('click', function(){   //goes to the board, and finds td
     if(turnCount % 2 === 0) {     //if you're the first player, when you click,
       $('body').css('cursor', 'url("http://s32.postimg.org/p815ukclt/swordcursor.png"),auto'); //cursor will change to sword cursor
@@ -277,23 +344,48 @@ function startClicking() {
       turnCount ++   //at the end of every click, turn count increases by 1
       setTimeout(computerMove, 1000);  //delays executing computermove function
     }
-    // else{    //if you are player two,
-    //   $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //cursor changes to fun cursor
-    //   swordSound(); //plays sword sound when clicked
-    //   currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
-    //   $(this).append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">') //inserts slash image to td
-    //   $(this).fadeTo('fast',0);  //td disappears
-    //   $(this).off('click'); //current td becomes unclickable
-    //   checkWinner(player2name); //checks winner
-    //   ifTie();  //checks tie
-    //   console.log(turnCount);
-    //   if(turnCount===8){
-    //     ('#go').css({
-    //       'visibility':'hidden'
-    //     })
-    //   }
-    // }
-    // turnCount ++   //at the end of every click, turn count increases by 1
+  })
+}
+
+//----------CLICK FUNCTION FOR TWO PLAYERS----------
+var turnCount = 0;
+
+function startClicking() {
+  $('#board').find('td').on('click', function(){   //goes to the board, and finds td
+    if(turnCount % 2 === 0) {     //if you're the first player, when you click,
+      $('body').css('cursor', 'url("http://s32.postimg.org/p815ukclt/swordcursor.png"),auto'); //cursor will change to sword cursor
+      gunSound(); //plays gun sound
+      currentPlayerTurn.text("Your Turn, Ninja " + player2name +"!" );  //current player becomes player 2
+      $(this).append('<img id="p1" src="http://s32.postimg.org/iy0b3td5d/explosion.png">');  //will insert an image/explosion on the td
+      $(this).fadeTo('slow',0);  //the td you just clicked on disappears
+      $(this).off('click');  //immediately after td disappears, this td becomes unclickable anymore
+      checkWinner(player1name);  //checks winning conditions everytime you click
+      ifTie();  //checks if its turn 9 everytime you click, if it is, displays 'round finished'
+      console.log(turnCount); //for debugging purposes. making sure turn count works
+        if(turnCount===8){  //if it is the last turn, when clicked,
+          $('#go').css({     //displaying current player's turn will disappear
+            'visibility':'hidden'
+          })
+        }
+    }
+    else{    //if you are player two,
+      swordSound();
+      $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //cursor changes to fun cursor
+      currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
+      $(this).append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">') //inserts slash image to td
+      $(this).fadeTo('fast',0);  //td disappears
+      $(this).off('click'); //current td becomes unclickable
+      checkWinner(player2name); //checks winner
+      ifTie();  //checks tie
+      console.log(turnCount);
+      if(turnCount===8){
+        ('#go').css({
+          'visibility':'hidden'
+        })
+      }
+    }
+    turnCount ++   //at the end of every click, turn count increases by 1
+
     })
 }
 
@@ -310,6 +402,7 @@ function checkWinner(player){
       })
       playAgain(); //makes the play again button work again
       newGame();  //makes the new game button work again
+      newGameSP();
 
       if(player === player1name){  //if the argument passed to checkWinner function is player1name,
         player1WinCount++;  //increase player 1 win count by one
@@ -332,6 +425,8 @@ function checkWinner(player){
       })
       playAgain();
       newGame();
+      newGameSP();
+
 
       if(player === player1name){
         player1WinCount++;
@@ -354,6 +449,7 @@ function checkWinner(player){
       })
       playAgain();
       newGame();
+      newGameSP();
 
       if(player === player1name){
         player1WinCount++;
@@ -398,6 +494,7 @@ function checkWinner(player){
       })
       playAgain();
       newGame();
+      newGameSP();
 
       if(player === player1name){
         player1WinCount++;
@@ -420,6 +517,8 @@ function checkWinner(player){
       })
       playAgain();
       newGame();
+      newGameSP();
+
 
       if(player === player1name){
         player1WinCount++;
@@ -442,6 +541,8 @@ function checkWinner(player){
       })
       playAgain();
       newGame();
+      newGameSP();
+
 
       if(player === player1name){
         player1WinCount++;
@@ -464,6 +565,8 @@ function checkWinner(player){
       })
       playAgain();
       newGame();
+      newGameSP();
+
 
       if(player === player1name){
         player1WinCount++;
@@ -486,6 +589,8 @@ function checkWinner(player){
         })
         playAgain();
         newGame();
+        newGameSP();
+
 
         if(player === player1name){
           player1WinCount++;
@@ -508,6 +613,8 @@ function checkWinner(player){
         })
         playAgain();
         newGame();
+        newGameSP();
+
 
         if(player === player1name){
           player1WinCount++;
@@ -533,6 +640,8 @@ function checkWinner(player){
         })
         playAgain();
         newGame();
+        newGameSP();
+
 
         if(player === player1name){
           player1WinCount++;
@@ -555,6 +664,8 @@ function checkWinner(player){
         })
         playAgain();
         newGame();
+        newGameSP();
+
 
         if(player === player1name){
           player1WinCount++;
@@ -577,6 +688,8 @@ function checkWinner(player){
         })
         playAgain();
         newGame();
+        newGameSP();
+
 
         if(player === player1name){
           player1WinCount++;
@@ -599,6 +712,8 @@ function checkWinner(player){
         })
         playAgain();
         newGame();
+        newGameSP();
+
 
         if(player === player1name){
           player1WinCount++;
@@ -621,6 +736,8 @@ function checkWinner(player){
         })
         playAgain();
         newGame();
+        newGameSP();
+
 
         if(player === player1name){
           player1WinCount++;
@@ -643,6 +760,8 @@ function checkWinner(player){
         })
         playAgain();
         newGame();
+        newGameSP();
+
 
         if(player === player1name){
           player1WinCount++;
@@ -661,6 +780,8 @@ function ifTie(){
   if (turnCount === 8){   //if it is turn 9,
     playAgain();   //re-activate Play Again button,  (other condition was if winner is declared, this will also be re-activated)
     newGame();  //re-activate New Game Button
+    newGameSP();
+
     alert('ROUND FINISHED!');  //display Round has finished.
   }
 }
