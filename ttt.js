@@ -70,7 +70,7 @@ var startGame = $('<button>')
 var resetBoard = $('<button>')
 .attr('id', 'resetBoard')
 .attr('type', 'button')
-.text('PLAY AGAIN!');
+.text('PLAY MP AGAIN!');
 body.append(resetBoard);
 
 //----------CREATING RESET SCORE BUTTON----------
@@ -190,7 +190,7 @@ function newGame() {
     $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //cursor is the gun cursor when game starts
     turnCount = 0;  //turn count starts from 0
     $('td').fadeTo('slow',1);  //makes all the ghosts appear, if they already aren't
-    startClicking();  //activates the clicking board function
+    startClickingMP();  //activates the clicking board function
     $('button#startGame').off('click') //immediately disables new game button until game finish or winner declared
     $('button#resetBoard').off('click') //immediately disables play again button until game finish or winner declared
     $('button#startGameSP').off('click') //immediately disables new game button until game finish or winner declared
@@ -228,9 +228,9 @@ function newGame() {
     $('table').css({
       'display': 'block'  //by default it displays none, we making it appear when new game button is clicked on
     })
-    $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-      'display': 'inline-block'
-    })
+    // $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+    //   'display': 'inline-block'
+    // })
     $('button#resetScore').css({ //by default it displays none, we making it appear when new game button is clicked on
       'display': 'inline-block'
     })
@@ -299,10 +299,13 @@ function playAgain() {
       $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //shows gun cursor when game is restarted
       turnCount = 0;  //number of turns reset back to zero
       $('td').fadeTo('slow',1);  //earlier, when we clicked on td, it disappears, now when we click play again, it will re-appear
-      startClicking(); //by default you cant click anything on the board unless function is activated, when we play again, activates clicking function
+      startClickingMP(); //by default you cant click anything on the board unless function is activated, when we play again, activates clicking function
       console.log(turnCount); //check if turn counts resets back to 0
       $('#go').css({   //Re-displays current player turn, we hid it earlier when round finishes or winner is declared
         'visibility':'visible'
+      })
+      $('#resetBoard').css({   //Re-displays current player turn, we hid it earlier when round finishes or winner is declared
+        'display':'none'
       })
       currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
 
@@ -350,7 +353,7 @@ function startClickingSP() {
 //----------CLICK FUNCTION FOR TWO PLAYERS----------
 var turnCount = 0;
 
-function startClicking() {
+function startClickingMP() {
   $('#board').find('td').on('click', function(){   //goes to the board, and finds td
     if(turnCount % 2 === 0) {     //if you're the first player, when you click,
       $('body').css('cursor', 'url("http://s32.postimg.org/p815ukclt/swordcursor.png"),auto'); //cursor will change to sword cursor
@@ -400,6 +403,9 @@ function checkWinner(player){
       $('#go').css({        //make the display of current turn invisible
         'visibility':'hidden'
       })
+      $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+        'display': 'inline-block'
+      })
       playAgain(); //makes the play again button work again
       newGame();  //makes the new game button work again
       newGameSP();
@@ -422,6 +428,9 @@ function checkWinner(player){
       $('#board').find('td').off('click');
       $('#go').css({
         'visibility':'hidden'
+      })
+      $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+        'display': 'inline-block'
       })
       playAgain();
       newGame();
@@ -447,6 +456,9 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
+      $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+        'display': 'inline-block'
+      })
       playAgain();
       newGame();
       newGameSP();
@@ -470,8 +482,12 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
+      $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+        'display': 'inline-block'
+      })
       playAgain();
       newGame();
+      newGameSP();
 
       if(player === player1name){
         player1WinCount++;
@@ -491,6 +507,9 @@ function checkWinner(player){
       $('#board').find('td').off('click');
       $('#go').css({
         'visibility':'hidden'
+      })
+      $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+        'display': 'inline-block'
       })
       playAgain();
       newGame();
@@ -514,6 +533,9 @@ function checkWinner(player){
       $('#board').find('td').off('click');
       $('#go').css({
         'visibility':'hidden'
+      })
+      $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+        'display': 'inline-block'
       })
       playAgain();
       newGame();
@@ -539,6 +561,9 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
+      $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+        'display': 'inline-block'
+      })
       playAgain();
       newGame();
       newGameSP();
@@ -562,6 +587,9 @@ function checkWinner(player){
       $('#board').find('td').off('click');
       $('#go').css({
         'visibility':'hidden'
+      })
+      $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+        'display': 'inline-block'
       })
       playAgain();
       newGame();
@@ -587,6 +615,9 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
+        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+          'display': 'inline-block'
+        })
         playAgain();
         newGame();
         newGameSP();
@@ -610,6 +641,12 @@ function checkWinner(player){
         $('#board').find('td').off('click');
         $('#go').css({
           'visibility':'hidden'
+        })
+        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+          'display': 'inline-block'
+        })
+        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+          'display': 'inline-block'
         })
         playAgain();
         newGame();
@@ -635,8 +672,8 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
-        $('#go').css({
-          'visibility':'hidden'
+        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+          'display': 'inline-block'
         })
         playAgain();
         newGame();
@@ -662,6 +699,9 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
+        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+          'display': 'inline-block'
+        })
         playAgain();
         newGame();
         newGameSP();
@@ -685,6 +725,9 @@ function checkWinner(player){
         $('#board').find('td').off('click');
         $('#go').css({
           'visibility':'hidden'
+        })
+        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+          'display': 'inline-block'
         })
         playAgain();
         newGame();
@@ -710,6 +753,9 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
+        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+          'display': 'inline-block'
+        })
         playAgain();
         newGame();
         newGameSP();
@@ -733,6 +779,9 @@ function checkWinner(player){
         $('#board').find('td').off('click');
         $('#go').css({
           'visibility':'hidden'
+        })
+        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+          'display': 'inline-block'
         })
         playAgain();
         newGame();
@@ -758,6 +807,9 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
+        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+          'display': 'inline-block'
+        })
         playAgain();
         newGame();
         newGameSP();
@@ -781,6 +833,10 @@ function ifTie(){
     playAgain();   //re-activate Play Again button,  (other condition was if winner is declared, this will also be re-activated)
     newGame();  //re-activate New Game Button
     newGameSP();
+
+    $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+      'display': 'inline-block'
+    })
 
     alert('ROUND FINISHED!');  //display Round has finished.
   }
@@ -859,10 +915,28 @@ var c3 = $('#board .3 .c3')
 function randomNumber(min, max){
   return Math.floor(Math.random() * 9)+1;
 }
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+console.log(randomNumber(1,9));
+
 
 function computerMove() {
     var result = randomNumber(1, 9);
-
     if (result == 1){
       if( $('#board .a1').find('img').length == 0 ){
         console.log('a1');

@@ -45,6 +45,9 @@ button{
   font-size: 15px;
   font-weight: bold;
 }
+button:hover{
+  color: yellow;
+}
 #player1WinText, #player2WinText{
   color: lightyellow;
   text-align: right;
@@ -67,4 +70,7 @@ button{
   font-size: 14px;
   position: relative;
   top: 280px;
+}
+#resetBoard{
+  display: none,
 }
