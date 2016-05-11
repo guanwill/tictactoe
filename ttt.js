@@ -1,4 +1,4 @@
-//----------HTML ELEMENTS-----------
+//----------CREATING GAME HEADING-----------
 var body = $('body');
 //HEADING
 var welcome = $('<h1>')
@@ -8,23 +8,24 @@ var welcome = $('<h1>')
 })
 body.append(welcome);
 
-//DEFAULT PLAYER NAMES
+//----------DEFAULT PLAYER NAMES----------
 var player1name = "";
 var player2name = "";
+// This displays player names on the board. Not going to do it.
 // var player1nameText = $('<h3>').attr('id','player1nameText').text(player1name);
 // body.append(player1nameText);
 // var player2nameText = $('<h3>').attr('id', 'player2nameText').text(player2name);
 // body.append(player2nameText);
 
-//GET CURRENT PLAYER TURN
+//----------DISPLAY CURRENT PLAYER'S TURN----------
 var currentPlayerTurn = $('<h3>')
-.attr('id', 'go').text("Your Turn, Gunslinger " + player1name +"!" )
-.css({
-  'font-family': 'Montserrat, cursive'
-})
+  .attr('id', 'go').text("Your Turn, Gunslinger " + player1name +"!" ) //by default, always show player 1 turn's first
+  .css({
+    'font-family': 'Montserrat, cursive'
+  })
 body.append(currentPlayerTurn);
 
-//CREATING BOARD/GRID
+//----------CREATING BOARD/GRID----------
 var board = $('<table>').attr('id','board');
 body.append(board);
 
@@ -33,51 +34,44 @@ var row1 = $('<tr>').addClass('row 1');
 var row2 = $('<tr>').addClass('row 2');
 var row3 = $('<tr>').addClass('row 3');
 board.append(row1, row2, row3);
-
 //adding columns to row 1
 var a1 = $('<td>').addClass('a1');
 var a2 = $('<td>').addClass('a2');
 var a3 = $('<td>').addClass('a3');
 row1.append(a1, a2, a3);
-
 //adding columns to row 2
 var b1 = $('<td>').addClass('b1');
 var b2 = $('<td>').addClass('b2');
 var b3 = $('<td>').addClass('b3');
 row2.append(b1, b2, b3);
-
 //adding columns to row 3
 var c1 = $('<td>').addClass('c1');
 var c2 = $('<td>').addClass('c2');
 var c3 = $('<td>').addClass('c3');
 row3.append(c1, c2, c3);
 
+//----------CREATING NEW GAME BUTTON----------
 var startGame = $('<button>')
-.attr('id', 'startGame')
-.attr('type', 'button')
-.text('NEW GAME');
-body.append(startGame);
+  .attr('id', 'startGame')
+  .attr('type', 'button')
+  .text('NEW GAME');
+  body.append(startGame);
 
+//----------CREATING PLAY AGAIN BUTTON----------
 var resetBoard = $('<button>')
 .attr('id', 'resetBoard')
 .attr('type', 'button')
 .text('PLAY AGAIN!');
 body.append(resetBoard);
 
+//----------CREATING RESET SCORE BUTTON----------
 var resetScore = $('<button>')
 .attr('id', 'resetScore')
 .attr('type', 'button')
 .text('RESET SCORE');
 body.append(resetScore);
 
-
-//----------------JAVASCRIPT------------------------
-
-//MOUSE CURSOR
-// $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //gun
-// $('body').css('cursor', 'url("http://s32.postimg.org/p815ukclt/swordcursor.png"),auto'); //sword
-
-//CLICK SOUND EFFECTS
+//----------CLICK SOUND EFFECTS----------
 var gunSound = function() {
   var gun = new Audio("gun.mp3");
   gun.play();
@@ -87,79 +81,29 @@ var swordSound = function() {
   sword.play();
 }
 
-//CLICK FUNCTION TO INSERT MARKET AND CALLING THE CHECKWINNER FUNCTION EVERY TIME
-var turnCount = 0;
-
-function startClicking() {
-  $('#board').find('td').on('click', function(){
-  if(turnCount % 2 === 0) {
-    currentPlayerTurn.text("Your Turn, Ninja " + player2name +"!" );
-    $('body').css('cursor', 'url("http://s32.postimg.org/p815ukclt/swordcursor.png"),auto');
-    gunSound();
-
-    // $(this).text('X');
-    // $(this).append('<img id="p1" src="http://s32.postimg.org/ic45bivr5/kisekae_2_prop_Ninja_star_by_zebuta_d8ru0p8.png">');
-    $(this).append('<img id="p1" src="http://s32.postimg.org/iy0b3td5d/explosion.png">');
-
-    $(this).fadeTo('slow',0);
-
-
-    $(this).off('click');
-    checkWinner(player1name);
-    ifTie();
-    console.log(turnCount);
-      if(turnCount===8){
-        $('#go').css({
-          'visibility':'hidden'
-        })
-      }
-  }
-  else{
-    currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
-    // $(this).text('O');
-    $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //gun
-    swordSound();
-
-    $(this).append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">')
-    $(this).fadeTo('fast',0);
-
-    $(this).off('click');
-    checkWinner(player2name);
-    ifTie();
-    if(turnCount===8){
-      ('#go').css({
-        'visibility':'hidden'
-      })
-    }
-    console.log(turnCount);
-  }
-  turnCount ++
-  })
-}
-
-//COUNTS PLAYER WINS;
-var player1WinCount = 0;
+//----------CREATING, DISPLAYING AND UPDATING PLAYER WINS----------
+var player1WinCount = 0;  //default wins
 var player2WinCount = 0;
 
 var winCount = $('<div>').attr('id', 'winCount');
 var player1WinText = $('<h3>')
-.attr('id','player1WinText')
-.text(player1name + " " +" " + player1WinCount +" : ")
-.css({
-  'font-family': 'Montserrat, cursive'
-})
+  .attr('id','player1WinText')
+  .text(player1name + " " +" " + player1WinCount +" : ")  //displays player one name and player one win count to newly created h3 tag
+  .css({
+    'font-family': 'Montserrat, cursive'
+  })
 winCount.append(player1WinText);
 
 var player2WinText = $('<h3>')
-.attr('id','player2WinText')
-.text(player2WinCount + " " + player2name)
-.css({
-  'font-family': 'Montserrat, cursive'
-})
+  .attr('id','player2WinText')
+  .text(player2WinCount + " " + player2name)   //displays player one name and player one win count to newly created h3 tag
+  .css({
+    'font-family': 'Montserrat, cursive'
+  })
 winCount.append(player2WinText);
-body.append(winCount);
+body.append(winCount);  //appends both displays to the body
 
-//SHOW PLAYER CHARACTER
+//----------SHOWS PLAYER CHARACTER IMAGE----------
 var playerType = $('<div>').attr('id', 'playerType');
 var playerType1 = $('<img id="playerType1" src="http://s32.postimg.org/rp9mswl75/gunman.png">')
 var vs = $('<img id="vs" src="http://s32.postimg.org/93ilao2j5/vs1.png">')
@@ -167,35 +111,178 @@ var playerType2 = $('<img id="playerType2" src="http://s32.postimg.org/9oojcbx3l
 playerType.append(playerType1, vs, playerType2);
 body.append(playerType);
 
-//RULES TEXT
+//----------SHOWS THE RULES----------
 var rules = $('<div>').attr('id', 'rules')
 .text("Rules are Simple! The gunslinger will always attack first because ninjas are lazy, and the winning conditions are the same as tic-tac-toe. The catch here is, you will have to remember where you've attacked in order to win!")
-// .css({
-//   'min-width':'500px',
-//   'color':'lightyellow',
-//   'margin':'0 auto',
-//   'font-family':'Montserrat',
-// })
 body.append(rules);
 
-//CHECK WINNER WITH P1 IMAGE
+//----------START NEW GAME----------
+function newGame() {
+  $('button#startGame').on('click', function(){  //when you click on new game button,
+    getPlayerNames(); //calls the function that prompts players to input their names
+    $('td').empty()  //all td becomes empty
+    $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //cursor is the gun cursor when game starts
+    turnCount = 0;  //turn count starts from 0
+    $('td').fadeTo('slow',1);  //makes all the ghosts appear, if they already aren't
+    startClicking();  //activates the clicking board function
+    $('button#startGame').off('click') //immediately disables new game button until game finish or winner declared
+    $('button#resetBoard').off('click') //immediately disables play again button until game finish or winner declared
+
+    currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );  //displays current player's turn
+    console.log(turnCount); //check if turn count is 0 when new game button is clicked on
+
+    player1WinCount = 0; //resets player 1 win count
+    player1WinText.text(player1name + " " +" " + player1WinCount +" : "); //updates the win count display
+    player2WinCount = 0;  //resets player 2 win count
+    player2WinText.text(player2WinCount + " " + player2name); //updates the win count display
+
+    //more rules when you start a new game
+    $('#rules').css({  //make rules disappear
+      'display': 'none'
+    })
+    $('h1').css({  //make heading disappear
+      'display': 'none'
+    })
+    $('#playerType').css({ //make player character images disappear
+      'display': 'none'
+    })
+    $('h3#go').css({ //make the display current player turn appear (as earlier, when game finishes or winner declared, it hides it)
+      'display': 'block'
+    })
+    // $('#winCount').css({
+    //   'display': 'block'
+    // })
+    // $('#player1WinText').css({
+    //   'display': 'inline-block'
+    // })
+    // $('#player2WinText').css({
+    //   'display': 'inline-block'
+    // })
+    $('table').css({
+      'display': 'block'  //by default it displays none, we making it appear when new game button is clicked on
+    })
+    $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+      'display': 'inline-block'
+    })
+    $('button#resetScore').css({ //by default it displays none, we making it appear when new game button is clicked on
+      'display': 'inline-block'
+    })
+  })
+}
+newGame();  //declare new game function straight away when website loads
+
+//----------GRAB SPECIFIC PLAYER NAMES----------
+var getPlayerNames = function(){
+  player1name = prompt('Player 1, what is your name?');
+  player2name = prompt('Player 2, what is your name?');
+
+  //if no input, use default name, otherwise put player's name
+  if (player1name === null){
+    player1WinText.text("Player One Wins: " +player1WinCount);
+    currentPlayerTurn.text("Go, Player One!");
+    player1name = "Player One";
+  }
+  else {
+    player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
+    currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
+
+  }
+  if (player2name === null) {
+    player2WinText.text("Player Two Wins: " + player2WinCount);
+    currentPlayerTurn.text("Go, Player Two!");
+    player2name = "Player Two";
+  }
+  else {
+    player2WinText.text(player2WinCount + " " + player2name);
+    currentPlayerTurn.text("Your Turn, Ninja " + player2name +"!" );
+  }
+}
+
+//----------PLAY AGAIN FUNCTION----------
+function playAgain() {
+  $('button#resetBoard').on('click', function(){   //When Play Again button is clicked on,
+      $('td').empty() //empty all the td
+      $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //shows gun cursor when game is restarted
+      turnCount = 0;  //number of turns reset back to zero
+      $('td').fadeTo('slow',1);  //earlier, when we clicked on td, it disappears, now when we click play again, it will re-appear
+      startClicking(); //by default you cant click anything on the board unless function is activated, when we play again, activates clicking function
+      console.log(turnCount); //check if turn counts resets back to 0
+      $('#go').css({   //Re-displays current player turn, we hid it earlier when round finishes or winner is declared
+        'visibility':'visible'
+      })
+      currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
+
+      $('button#startGame').off('click') //Once play again has been clicked, new game button disables until game ends,
+      $('button#resetBoard').off('click')//play again button is also disabled until game ends
+  })
+}
+
+//----------RESET SCORE----------
+$('button#resetScore').on('click', function(){
+  player1WinCount = 0;
+  player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
+  player2WinCount = 0;
+  player2WinText.text(player2WinCount + " " + player2name);
+})
+
+//----------CLICK FUNCTION----------
+var turnCount = 0;
+
+function startClicking() {
+  $('#board').find('td').on('click', function(){   //goes to the board, and finds td
+    if(turnCount % 2 === 0) {     //if you're the first player, when you click,
+      $('body').css('cursor', 'url("http://s32.postimg.org/p815ukclt/swordcursor.png"),auto'); //cursor will change to sword cursor
+      gunSound(); //plays gun sound
+      currentPlayerTurn.text("Your Turn, Ninja " + player2name +"!" );  //current player becomes player 2
+      $(this).append('<img id="p1" src="http://s32.postimg.org/iy0b3td5d/explosion.png">');  //will insert an image/explosion on the td
+      $(this).fadeTo('slow',0);  //the td you just clicked on disappears
+      $(this).off('click');  //immediately after td disappears, this td becomes unclickable anymore
+      checkWinner(player1name);  //checks winning conditions everytime you click
+      ifTie();  //checks if its turn 9 everytime you click, if it is, displays 'round finished'
+      console.log(turnCount); //for debugging purposes. making sure turn count works
+        if(turnCount===8){  //if it is the last turn, when clicked,
+          $('#go').css({     //displaying current player's turn will disappear
+            'visibility':'hidden'
+          })
+        }
+    }
+    else{    //if you are player two,
+      $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //cursor changes to fun cursor
+      swordSound(); //plays sword sound when clicked
+      currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
+      $(this).append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">') //inserts slash image to td
+      $(this).fadeTo('fast',0);  //td disappears
+      $(this).off('click'); //current td becomes unclickable
+      checkWinner(player2name); //checks winner
+      ifTie();  //checks tie
+      console.log(turnCount);
+      if(turnCount===8){
+        ('#go').css({
+          'visibility':'hidden'
+        })
+      }
+    }
+    turnCount ++   //at the end of every click, turn count increases by 1
+    })
+}
+
+//----------CHECK WINNER WITH P1 IMAGE----------
 function checkWinner(player){
   //check row 1
-  if( $('#board').find('.a1').length !== '' ){
-    if( $('#board .1 .a1 #p1').length !=0 && $('#board .1 .a2 #p1').length !=0 && $('#board .1 .a3 #p1').length !=0 ){
-      alert(player +' is the Winner!');
+  if( $('#board').find('.a1').length !== '' ){   //goes to board and finds td with class a1 and check if it is empty. If it is NOT EMPTY,
+    if( $('#board .1 .a1 #p1').length !=0 && $('#board .1 .a2 #p1').length !=0 && $('#board .1 .a3 #p1').length !=0 ){  //THEN, if a1's image length is not empty, a2's image length is not empty, and a3's image length is also not empty,
+      alert(player +' is the Winner!'); //display winner
 
-      $('#board').find('td').off('click');
-      $('#go').css({
+      $('#board').find('td').off('click'); //once displayed winner, makes the whole board unclickable, so no game
+      $('#go').css({        //make the display of current turn invisible
         'visibility':'hidden'
       })
+      playAgain(); //makes the play again button work again
+      newGame();  //makes the new game button work again
 
-      playAgain();
-      newGame();
-
-      if(player === player1name){
-        player1WinCount++;
-        player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
+      if(player === player1name){  //if the argument passed to checkWinner function is player1name,
+        player1WinCount++;  //increase player 1 win count by one
+        player1WinText.text(player1name + " " +" " + player1WinCount +" : "); //and update the display of the wins
       }
       else if (player == player2name){
         player2WinCount++;
@@ -538,137 +625,24 @@ function checkWinner(player){
     }
 }
 
-// // IF TIE
+//----------IF IT IS THE LAST TURN----------
 function ifTie(){
-  if (turnCount === 8){
-    playAgain();
-    newGame();
-    alert('ROUND FINISHED!');
-
+  if (turnCount === 8){   //if it is turn 9,
+    playAgain();   //re-activate Play Again button,  (other condition was if winner is declared, this will also be re-activated)
+    newGame();  //re-activate New Game Button
+    alert('ROUND FINISHED!');  //display Round has finished.
   }
 }
 
-//RESET BOARD TO PLAY AGAIN
-function playAgain() {
-  $('button#resetBoard').on('click', function(){
-      $('td').empty()
-      $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //gun
-      turnCount = 0;
-      $('td').fadeTo('slow',1);
-
-      currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
-      startClicking();
-      console.log(turnCount);
-
-      $('#go').css({
-        'visibility':'visible'
-      })
-
-      $('button#startGame').off('click')
-      $('button#resetBoard').off('click')
-  })
-}
-
-//RESET SCORE
-$('button#resetScore').on('click', function(){
-  player1WinCount = 0;
-  player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
-  player2WinCount = 0;
-  player2WinText.text(player2WinCount + " " + player2name);
-
-
-})
-
-//START GAME
-function newGame() {
-  $('button#startGame').on('click', function(){
-    getPlayerNames();
-    $('td').empty()
-    $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //gun
-    turnCount = 0;
-    $('td').fadeTo('slow',1);  //made all the ghosts reappear
-
-    currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
-    console.log(turnCount);
-    player1WinCount = 0;
-    player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
-    player2WinCount = 0;
-    player2WinText.text(player2WinCount + " " + player2name);
-    startClicking();
-
-    $('#rules').css({
-      'display': 'none'
-    })
-    $('h1').css({
-      'display': 'none'
-    })
-    $('#playerType').css({
-      'display': 'none'
-    })
-    $('h3#go').css({
-      'display': 'block'
-    })
-    $('#winCount').css({
-      'display': 'block'
-    })
-    $('#player1WinText').css({
-      'display': 'inline-block'
-    })
-    $('#player2WinText').css({
-      'display': 'inline-block'
-    })
-    $('table').css({
-      'display': 'block'
-    })
-    $('button#resetBoard').css({
-      'display': 'inline-block'
-    })
-    $('button#resetScore').css({
-      'display': 'inline-block'
-    })
-
-    $('button#startGame').off('click')
-    $('button#resetBoard').off('click')
-  })
-}
-newGame();
-
-//GRAB SPECIFIC PLAYER NAMES WHEN YOU CLICK START GAME
-var getPlayerNames = function(){
-  player1name = prompt('Player 1, what is your name?');
-  player2name = prompt('Player 2, what is your name?');
-
-  //IF NO INPUT, USE DEFAULT NAME, OTHERWISE PUT PLAYER'S NAME
-  if (player1name === null){
-    player1WinText.text("Player One Wins: " +player1WinCount);
-    currentPlayerTurn.text("Go, Player One!");
-    player1name = "Player One";
-  }
-  else {
-    player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
-    currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
-
-  }
-  if (player2name === null) {
-    player2WinText.text("Player Two Wins: " + player2WinCount);
-    currentPlayerTurn.text("Go, Player Two!");
-    player2name = "Player Two";
-  }
-  else {
-    player2WinText.text(player2WinCount + " " + player2name);
-    currentPlayerTurn.text("Your Turn, Ninja " + player2name +"!" );
-  }
-}
-
-//-------------CSS---------------
+//----------CSS----------
 body.css({
   'text-align': 'center'
 })
 board.css({
   'width': '600px',
   'height':'600px',
-  // 'border':'10px outset rgb(47,5,5)',
   'margin': '0 auto',
+  // 'border':'10px outset rgb(47,5,5)',
   // 'background': 'url("http://wood-center.gr/Photos/bg.jpg") no-repeat center center fixed'
 })
 
@@ -682,22 +656,21 @@ $('tr').css({
 $('td').css({
   'width':'200px',
   'height':'170px',
-  // 'border-style': 'solid',
-  // 'border-color':'brown',
   'transition':'.2s ease-in-out',
   'margin': '10px',
   'border-radius': '100%',
-  // 'background':'url("http://www.targetsoftware.co.uk/images/target.png")',
   'background':'url("http://s32.postimg.org/5u0nxi0r5/TRANSPARENT_GH.png")',
   'background-position': 'center',
   'background-size': 'cover',
-
+  // 'border-style': 'solid',
+  // 'border-color':'brown',
+  // 'background':'url("http://www.targetsoftware.co.uk/images/target.png")',
 })
 
 $('td').mouseover(function() {
   $(this).css({
-    // 'background':'red',
     'transform': 'scale(1.05)',
+    // 'background':'red',
     // 'border':'2px solid red'
   })
 })
@@ -717,7 +690,7 @@ $('img').css({
 })
 
 
-// ---------------EXTRA FEATURES---------------
-
-//WIRE FRAMING - sketching of what is needed/sketch of the design, etc
+//----------EXTRA FEATURES TO ADD`---------------
+//let player choose character
 //timer
+//AI
