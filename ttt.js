@@ -245,23 +245,25 @@ function startClicking() {
             'visibility':'hidden'
           })
         }
+    setTimeout(computerMove, 1000);
+
     }
-    else{    //if you are player two,
-      $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //cursor changes to fun cursor
-      swordSound(); //plays sword sound when clicked
-      currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
-      $(this).append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">') //inserts slash image to td
-      $(this).fadeTo('fast',0);  //td disappears
-      $(this).off('click'); //current td becomes unclickable
-      checkWinner(player2name); //checks winner
-      ifTie();  //checks tie
-      console.log(turnCount);
-      if(turnCount===8){
-        ('#go').css({
-          'visibility':'hidden'
-        })
-      }
-    }
+    // else{    //if you are player two,
+    //   $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //cursor changes to fun cursor
+    //   swordSound(); //plays sword sound when clicked
+    //   currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
+    //   $(this).append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">') //inserts slash image to td
+    //   $(this).fadeTo('fast',0);  //td disappears
+    //   $(this).off('click'); //current td becomes unclickable
+    //   checkWinner(player2name); //checks winner
+    //   ifTie();  //checks tie
+    //   console.log(turnCount);
+    //   if(turnCount===8){
+    //     ('#go').css({
+    //       'visibility':'hidden'
+    //     })
+    //   }
+    // }
     turnCount ++   //at the end of every click, turn count increases by 1
     })
 }
@@ -694,3 +696,121 @@ $('img').css({
 //let player choose character
 //timer
 //AI
+var a1 = $('#board .1 .a1')
+var a2 = $('#board .1 .a2')
+var a3 = $('#board .1 .a3')
+var b1 = $('#board .2 .b1')
+var b2 = $('#board .2 .b2')
+var b3 = $('#board .2 .b3')
+var c1 = $('#board .3 .c1')
+var c2 = $('#board .3 .c2')
+var c3 = $('#board .3 .c3')
+
+function randomNumber(min, max){
+  return Math.floor(Math.random() * 9)+1;
+}
+
+function computerMove() {
+    var result = randomNumber(1, 9);
+
+    if (result == 1){
+      if( $('#board .a1').find('img').length == 0 ){
+        console.log('a1');
+        a1.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+      }
+      else {
+        computerMove();
+      }
+    }
+
+    else if (result == 2){
+      if( $('#board .a2').find('img').length == 0 ){
+        console.log('a2');
+        a2.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+      }
+      else {
+        computerMove();
+      }
+    }
+    else if (result == 3){
+      if( $('#board .a3').find('img').length == 0 ){
+        console.log('a3');
+        a3.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+      }
+      else {
+        computerMove();
+      }
+    }
+    else if (result == 4){
+      if( $('#board .b1').find('img').length == 0 ){
+        console.log('b1');
+        b1.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+      }
+      else {
+        computerMove();
+      }
+    }
+    else if (result == 5){
+      if( $('#board .b2').find('img').length == 0 ){
+        console.log('b2');
+        b2.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+      }
+      else {
+        computerMove();
+      }
+    }
+    else if (result == 6){
+      if( $('#board .b3').find('img').length == 0 ){
+        b3.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+      }
+      else {
+        computerMove();
+      }
+    }
+    else if (result == 7){
+      if( $('#board .c1').find('img').length == 0 ){
+        c1.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+      }
+      else {
+        computerMove();
+      }
+    }
+    else if (result == 8){
+      if( $('#board .c2').find('img').length == 0 ){
+        c2.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+      }
+      else {
+        computerMove();
+      }
+    }
+    else if (result == 9){
+      if( $('#board .c3').find('img').length == 0 ){
+        c3.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+      }
+      // else {
+      //   computerMove(;
+      // }
+    }
+
+    turnCount++;
+    $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //cursor changes to fun cursor
+    swordSound(); //plays sword sound when clicked
+    currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
+    // checkWinner(); //checks winner
+
+  }
+
+// console.log(computerMove())
+
+
+
+
+
+//   if( $('#board .1 .a1 #p1').length !=0 && $('#board .1 .a2 #p1').length !=0){
+//     $('#board .1 .a3').append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">');
+//     $('#board .1 .a3').fadeTo('slow',0);
+//     swordSound();
+//     checkWinner();
+//     alert('Computer Wins, you noob');
+//   }
+// }

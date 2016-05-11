@@ -53,6 +53,7 @@ button{
 }
 #winCount{
   margin: 0 auto;
+  display:block;
 }
 #playerType{
   margin-top: 70px;
