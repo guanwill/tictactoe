@@ -149,15 +149,6 @@ function newGame() {
     $('h3#go').css({ //make the display current player turn appear (as earlier, when game finishes or winner declared, it hides it)
       'display': 'block'
     })
-    // $('#winCount').css({
-    //   'display': 'block'
-    // })
-    // $('#player1WinText').css({
-    //   'display': 'inline-block'
-    // })
-    // $('#player2WinText').css({
-    //   'display': 'inline-block'
-    // })
     $('table').css({
       'display': 'block'  //by default it displays none, we making it appear when new game button is clicked on
     })
@@ -602,7 +593,7 @@ function checkWinner(player){
       }
     }
     //column 3
-    if( $('#board').find('.c1').length !== '' ){
+    if( $('#board').find('.a3').length !== '' ){
       if( $('#board .1 .a3 #p2').length !=0 && $('#board .2 .b3 #p2').length !=0 && $('#board .3 .c3 #p2').length !=0 ){
         alert(player +' is the Winner!');
 
