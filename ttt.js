@@ -11,6 +11,8 @@ body.append(welcome);
 //----------DEFAULT PLAYER NAMES----------
 var player1name = "";
 var player2name = "";
+var computerName = "";
+
 // This displays player names on the board. Not going to do it.
 // var player1nameText = $('<h3>').attr('id','player1nameText').text(player1name);
 // body.append(player1nameText);
@@ -149,15 +151,15 @@ function newGame() {
     $('h3#go').css({ //make the display current player turn appear (as earlier, when game finishes or winner declared, it hides it)
       'display': 'block'
     })
-    // $('#winCount').css({
-    //   'display': 'block'
-    // })
-    // $('#player1WinText').css({
-    //   'display': 'inline-block'
-    // })
-    // $('#player2WinText').css({
-    //   'display': 'inline-block'
-    // })
+    $('#winCount').css({
+      'display': 'block'
+    })
+    $('#player1WinText').css({
+      'display': 'inline-block'
+    })
+    $('#player2WinText').css({
+      'display': 'inline-block'
+    })
     $('table').css({
       'display': 'block'  //by default it displays none, we making it appear when new game button is clicked on
     })
@@ -188,13 +190,40 @@ var getPlayerNames = function(){
 
   }
   if (player2name === null) {
-    player2WinText.text("Player Two Wins: " + player2WinCount);
+    player2WinText.text(player2WinCount + " " + "Player Two")
     currentPlayerTurn.text("Go, Player Two!");
     player2name = "Player Two";
   }
   else {
     player2WinText.text(player2WinCount + " " + player2name);
     currentPlayerTurn.text("Your Turn, Ninja " + player2name +"!" );
+  }
+}
+
+//----------GRAB NAMES FOR VS AI----------
+var getNamesforSP = function(){
+  player1name = prompt('Player 1, what is your name?');
+  computerName = prompt('Player 2, what is your name?');
+
+  //if no input, use default name, otherwise put player's name
+  if (player1name === null){
+    player1WinText.text("Player One Wins: " +player1WinCount);
+    currentPlayerTurn.text("Go, Player One!");
+    player1name = "Player One";
+  }
+  else {
+    player1WinText.text(player1name + " " +" " + player1WinCount +" : ");
+    currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
+
+  }
+  if (computerName === null) {
+    player2WinText.text(player2WinCount + " " + "Computer");
+    currentPlayerTurn.text("Go, Player Two!");
+    player2name = "Player Two";
+  }
+  else {
+    player2WinText.text(player2WinCount + " " + computerName);
+    currentPlayerTurn.text("Your Turn, Ninja " + computerName +"!" );
   }
 }
 
@@ -245,8 +274,8 @@ function startClicking() {
             'visibility':'hidden'
           })
         }
-    setTimeout(computerMove, 1000);
-
+      turnCount ++   //at the end of every click, turn count increases by 1
+      setTimeout(computerMove, 1000);  //delays executing computermove function
     }
     // else{    //if you are player two,
     //   $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //cursor changes to fun cursor
@@ -264,7 +293,7 @@ function startClicking() {
     //     })
     //   }
     // }
-    turnCount ++   //at the end of every click, turn count increases by 1
+    // turnCount ++   //at the end of every click, turn count increases by 1
     })
 }
 
@@ -717,6 +746,11 @@ function computerMove() {
       if( $('#board .a1').find('img').length == 0 ){
         console.log('a1');
         a1.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+        checkWinner(player2name);
+        ifTie();
+        turnCount ++
+        swordSound(); //plays sword sound when clicked
+
       }
       else {
         computerMove();
@@ -727,6 +761,12 @@ function computerMove() {
       if( $('#board .a2').find('img').length == 0 ){
         console.log('a2');
         a2.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+        checkWinner(player2name);
+        ifTie();
+        turnCount ++
+        swordSound(); //plays sword sound when clicked
+
+
       }
       else {
         computerMove();
@@ -736,6 +776,11 @@ function computerMove() {
       if( $('#board .a3').find('img').length == 0 ){
         console.log('a3');
         a3.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+        checkWinner(player2name);
+        ifTie();
+        turnCount ++
+        swordSound(); //plays sword sound when clicked
+
       }
       else {
         computerMove();
@@ -745,6 +790,11 @@ function computerMove() {
       if( $('#board .b1').find('img').length == 0 ){
         console.log('b1');
         b1.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+        checkWinner(player2name);
+        ifTie();
+        turnCount ++
+        swordSound(); //plays sword sound when clicked
+
       }
       else {
         computerMove();
@@ -754,6 +804,11 @@ function computerMove() {
       if( $('#board .b2').find('img').length == 0 ){
         console.log('b2');
         b2.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+        checkWinner(player2name);
+        ifTie();
+        turnCount ++
+        swordSound(); //plays sword sound when clicked
+
       }
       else {
         computerMove();
@@ -761,7 +816,14 @@ function computerMove() {
     }
     else if (result == 6){
       if( $('#board .b3').find('img').length == 0 ){
+        console.log('b3');
         b3.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+        checkWinner(player2name);
+        ifTie();
+        turnCount ++
+        swordSound(); //plays sword sound when clicked
+
+
       }
       else {
         computerMove();
@@ -769,7 +831,13 @@ function computerMove() {
     }
     else if (result == 7){
       if( $('#board .c1').find('img').length == 0 ){
+        console.log('c1');
         c1.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+        checkWinner(player2name);
+        ifTie();
+        turnCount ++
+        swordSound(); //plays sword sound when clicked
+
       }
       else {
         computerMove();
@@ -777,7 +845,13 @@ function computerMove() {
     }
     else if (result == 8){
       if( $('#board .c2').find('img').length == 0 ){
+        console.log('c2');
         c2.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
+        checkWinner(player2name);
+        ifTie();
+        turnCount ++
+        swordSound(); //plays sword sound when clicked
+
       }
       else {
         computerMove();
@@ -785,18 +859,18 @@ function computerMove() {
     }
     else if (result == 9){
       if( $('#board .c3').find('img').length == 0 ){
+        console.log('c3');
         c3.append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">').fadeTo('fast',0);
-      }
-      // else {
-      //   computerMove(;
-      // }
-    }
+        checkWinner(player2name);
+        ifTie();
+        turnCount ++
+        swordSound(); //plays sword sound when clicked
 
-    turnCount++;
+      }
+    }
     $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //cursor changes to fun cursor
-    swordSound(); //plays sword sound when clicked
     currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
-    // checkWinner(); //checks winner
+
 
   }
 
