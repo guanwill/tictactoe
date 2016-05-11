@@ -66,11 +66,18 @@ var startGame = $('<button>')
   .text('MULTIPLAYER');
   body.append(startGame);
 
-//----------CREATING PLAY AGAIN BUTTON----------
+//----------CREATING PLAY SP AGAIN BUTTON----------
+var resetBoardSP = $('<button>')
+.attr('id', 'resetBoardSP')
+.attr('type', 'button')
+.text('PLAY SP AGAIN');
+body.append(resetBoardSP);
+
+//----------CREATING PLAY MP AGAIN BUTTON----------
 var resetBoard = $('<button>')
 .attr('id', 'resetBoard')
 .attr('type', 'button')
-.text('PLAY MP AGAIN!');
+.text('PLAY MP AGAIN');
 body.append(resetBoard);
 
 //----------CREATING RESET SCORE BUTTON----------
@@ -136,6 +143,7 @@ function newGameSP() {
     startClickingSP();  //activates the clicking board function
     $('button#startGame').off('click') //immediately disables new game button until game finish or winner declared
     $('button#resetBoard').off('click') //immediately disables play again button until game finish or winner declared
+    $('button#resetBoardSP').off('click')//play again button is also disabled until game ends
     $('button#startGameSP').off('click') //immediately disables new game button until game finish or winner declared
 
 
@@ -175,6 +183,9 @@ function newGameSP() {
     $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
       'display': 'inline-block'
     })
+    $('button#resetBoardSP').css({ //by default it displays none, we making it appear when new game button is clicked on
+      'display': 'inline-block'
+    })
     $('button#resetScore').css({ //by default it displays none, we making it appear when new game button is clicked on
       'display': 'inline-block'
     })
@@ -194,6 +205,7 @@ function newGame() {
     $('button#startGame').off('click') //immediately disables new game button until game finish or winner declared
     $('button#resetBoard').off('click') //immediately disables play again button until game finish or winner declared
     $('button#startGameSP').off('click') //immediately disables new game button until game finish or winner declared
+    $('button#resetBoardSP').off('click')//play again button is also disabled until game ends
 
     currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );  //displays current player's turn
     console.log(turnCount); //check if turn count is 0 when new game button is clicked on
@@ -228,9 +240,12 @@ function newGame() {
     $('table').css({
       'display': 'block'  //by default it displays none, we making it appear when new game button is clicked on
     })
-    // $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-    //   'display': 'inline-block'
-    // })
+    $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
+      'display': 'inline-block'
+    })
+    $('button#resetBoardSP').css({ //by default it displays none, we making it appear when new game button is clicked on
+      'display': 'inline-block'
+    })
     $('button#resetScore').css({ //by default it displays none, we making it appear when new game button is clicked on
       'display': 'inline-block'
     })
@@ -268,11 +283,11 @@ var getPlayerNames = function(){
 //----------GRAB NAMES FOR VS AI----------
 var getNamesforSP = function(){
   player1name = prompt('Player 1, what is your name?');
-   player2name = prompt('Give the AI a name!');
+  player2name = prompt('Give the AI a name!');
 
   //if no input, use default name, otherwise put player's name
   if (player1name === null){
-    player1WinText.text("Player One Wins: " +player1WinCount);
+    player1WinText.text("Player One " + " " + player1WinCount + " : ");
     currentPlayerTurn.text("Go, Player One!");
     player1name = "Player One";
   }
@@ -281,10 +296,10 @@ var getNamesforSP = function(){
     currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
 
   }
-  if ( player2name === null) {
+  if (player2name === null) {
     player2WinText.text(player2WinCount + " " + "Computer");
-    currentPlayerTurn.text("Go, Player Two!");
-    player2name = "Player Two";
+    currentPlayerTurn.text("Go, Computer!");
+    player2name = "Computer";
   }
   else {
     player2WinText.text(player2WinCount + " " +  player2name);
@@ -292,7 +307,7 @@ var getNamesforSP = function(){
   }
 }
 
-//----------PLAY AGAIN FUNCTION----------
+//----------PLAY MP AGAIN FUNCTION----------
 function playAgain() {
   $('button#resetBoard').on('click', function(){   //When Play Again button is clicked on,
       $('td').empty() //empty all the td
@@ -304,15 +319,33 @@ function playAgain() {
       $('#go').css({   //Re-displays current player turn, we hid it earlier when round finishes or winner is declared
         'visibility':'visible'
       })
-      $('#resetBoard').css({   //Re-displays current player turn, we hid it earlier when round finishes or winner is declared
-        'display':'none'
+      currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
+
+      $('button#startGame').off('click') //Once play again has been clicked, new game button disables until game ends,
+      $('button#resetBoard').off('click')//play again button is also disabled until game ends
+      $('button#resetBoardSP').off('click')//play again button is also disabled until game ends
+      $('button#startGameSP').off('click') //immediately disables new game button until game finish or winner declared
+  })
+}
+
+//----------PLAY SP AGAIN FUNCTION----------
+function playSPAgain() {
+  $('button#resetBoardSP').on('click', function(){   //When Play Again button is clicked on,
+      $('td').empty() //empty all the td
+      $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //shows gun cursor when game is restarted
+      turnCount = 0;  //number of turns reset back to zero
+      $('td').fadeTo('slow',1);  //earlier, when we clicked on td, it disappears, now when we click play again, it will re-appear
+      startClickingSP(); //by default you cant click anything on the board unless function is activated, when we play again, activates clicking function
+      console.log(turnCount); //check if turn counts resets back to 0
+      $('#go').css({   //Re-displays current player turn, we hid it earlier when round finishes or winner is declared
+        'visibility':'visible'
       })
       currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
 
       $('button#startGame').off('click') //Once play again has been clicked, new game button disables until game ends,
       $('button#resetBoard').off('click')//play again button is also disabled until game ends
+      $('button#resetBoardSP').off('click')//play again button is also disabled until game ends
       $('button#startGameSP').off('click') //immediately disables new game button until game finish or winner declared
-
   })
 }
 
@@ -350,7 +383,7 @@ function startClickingSP() {
   })
 }
 
-//----------CLICK FUNCTION FOR TWO PLAYERS----------
+//----------CLICK FUNCTION FOR MP----------
 var turnCount = 0;
 
 function startClickingMP() {
@@ -403,10 +436,9 @@ function checkWinner(player){
       $('#go').css({        //make the display of current turn invisible
         'visibility':'hidden'
       })
-      $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-        'display': 'inline-block'
-      })
+
       playAgain(); //makes the play again button work again
+      playSPAgain();
       newGame();  //makes the new game button work again
       newGameSP();
 
@@ -429,10 +461,9 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
-      $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-        'display': 'inline-block'
-      })
+
       playAgain();
+      playSPAgain();
       newGame();
       newGameSP();
 
@@ -456,10 +487,9 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
-      $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-        'display': 'inline-block'
-      })
+
       playAgain();
+      playSPAgain();
       newGame();
       newGameSP();
 
@@ -482,10 +512,9 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
-      $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-        'display': 'inline-block'
-      })
+
       playAgain();
+      playSPAgain();
       newGame();
       newGameSP();
 
@@ -508,10 +537,9 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
-      $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-        'display': 'inline-block'
-      })
+
       playAgain();
+      playSPAgain();
       newGame();
       newGameSP();
 
@@ -534,10 +562,9 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
-      $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-        'display': 'inline-block'
-      })
+
       playAgain();
+      playSPAgain();
       newGame();
       newGameSP();
 
@@ -561,10 +588,9 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
-      $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-        'display': 'inline-block'
-      })
+
       playAgain();
+      playSPAgain();
       newGame();
       newGameSP();
 
@@ -588,10 +614,9 @@ function checkWinner(player){
       $('#go').css({
         'visibility':'hidden'
       })
-      $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-        'display': 'inline-block'
-      })
+
       playAgain();
+      playSPAgain();
       newGame();
       newGameSP();
 
@@ -615,10 +640,9 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
-        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-          'display': 'inline-block'
-        })
+
         playAgain();
+        playSPAgain();
         newGame();
         newGameSP();
 
@@ -642,13 +666,9 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
-        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-          'display': 'inline-block'
-        })
-        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-          'display': 'inline-block'
-        })
+
         playAgain();
+        playSPAgain();
         newGame();
         newGameSP();
 
@@ -672,10 +692,9 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
-        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-          'display': 'inline-block'
-        })
+
         playAgain();
+        playSPAgain();
         newGame();
         newGameSP();
 
@@ -699,10 +718,9 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
-        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-          'display': 'inline-block'
-        })
+
         playAgain();
+        playSPAgain();
         newGame();
         newGameSP();
 
@@ -726,10 +744,9 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
-        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-          'display': 'inline-block'
-        })
+
         playAgain();
+        playSPAgain();
         newGame();
         newGameSP();
 
@@ -753,10 +770,9 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
-        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-          'display': 'inline-block'
-        })
+
         playAgain();
+        playSPAgain();
         newGame();
         newGameSP();
 
@@ -780,10 +796,9 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
-        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-          'display': 'inline-block'
-        })
+
         playAgain();
+        playSPAgain();
         newGame();
         newGameSP();
 
@@ -807,10 +822,9 @@ function checkWinner(player){
         $('#go').css({
           'visibility':'hidden'
         })
-        $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-          'display': 'inline-block'
-        })
+
         playAgain();
+        playSPAgain();
         newGame();
         newGameSP();
 
@@ -831,12 +845,9 @@ function checkWinner(player){
 function ifTie(){
   if (turnCount === 8){   //if it is turn 9,
     playAgain();   //re-activate Play Again button,  (other condition was if winner is declared, this will also be re-activated)
+    playSPAgain();
     newGame();  //re-activate New Game Button
     newGameSP();
-
-    $('button#resetBoard').css({ //by default it displays none, we making it appear when new game button is clicked on
-      'display': 'inline-block'
-    })
 
     alert('ROUND FINISHED!');  //display Round has finished.
   }
@@ -915,25 +926,6 @@ var c3 = $('#board .3 .c3')
 function randomNumber(min, max){
   return Math.floor(Math.random() * 9)+1;
 }
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-console.log(randomNumber(1,9));
-
 
 function computerMove() {
     var result = randomNumber(1, 9);
@@ -945,13 +937,11 @@ function computerMove() {
         ifTie();
         turnCount ++
         swordSound(); //plays sword sound when clicked
-
       }
       else {
         computerMove();
       }
     }
-
     else if (result == 2){
       if( $('#board .a2').find('img').length == 0 ){
         console.log('a2');
@@ -960,8 +950,6 @@ function computerMove() {
         ifTie();
         turnCount ++
         swordSound(); //plays sword sound when clicked
-
-
       }
       else {
         computerMove();
@@ -975,7 +963,6 @@ function computerMove() {
         ifTie();
         turnCount ++
         swordSound(); //plays sword sound when clicked
-
       }
       else {
         computerMove();
@@ -1017,8 +1004,6 @@ function computerMove() {
         ifTie();
         turnCount ++
         swordSound(); //plays sword sound when clicked
-
-
       }
       else {
         computerMove();
@@ -1032,7 +1017,6 @@ function computerMove() {
         ifTie();
         turnCount ++
         swordSound(); //plays sword sound when clicked
-
       }
       else {
         computerMove();
@@ -1060,26 +1044,14 @@ function computerMove() {
         ifTie();
         turnCount ++
         swordSound(); //plays sword sound when clicked
-
       }
+    }
+    else if (result > 9){
+      computerMove();
+    }
+    else if (result < 1){
+      computerMove();
     }
     $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //cursor changes to fun cursor
     currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
-
-
   }
-
-// console.log(computerMove())
-
-
-
-
-
-//   if( $('#board .1 .a1 #p1').length !=0 && $('#board .1 .a2 #p1').length !=0){
-//     $('#board .1 .a3').append('<img id="p2" src="http://s32.postimg.org/wpvepx0b9/slash3.png">');
-//     $('#board .1 .a3').fadeTo('slow',0);
-//     swordSound();
-//     checkWinner();
-//     alert('Computer Wins, you noob');
-//   }
-// }
