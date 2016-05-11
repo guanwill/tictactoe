@@ -12,6 +12,7 @@ button#resetBoardSP{
 }
 button#resetScore{
   display: none;
+  margin-right: 100px;
 }
 
 html{
@@ -39,7 +40,7 @@ h1{
     2px 2px 0 #440a0a;
 }
 button{
-  padding: 2px 7px 2px 7px;
+  padding: 5px 7px 5px 7px;
   margin: 60px 10px 10px 10px;
   color: brown;
   background: black;
@@ -72,8 +73,14 @@ button:hover{
   font-family: 'Montserrat';
   font-size: 14px;
   position: relative;
-  top: 280px;
+  top: 330px;
 }
-#resetBoard{
-  display: none,
+#resetBoardSP{  /*play SP again*/
+  margin-right: 100px;
+}
+button#resetScore{
+  background: rgb(14, 10, 59);
+  color: rgb(245, 228, 113);
+  border: 2px solid white;
+  padding: 10px;
 }

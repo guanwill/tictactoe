@@ -57,35 +57,35 @@ var startGameSP = $('<button>')
   .attr('id', 'startGameSP')
   .attr('type', 'button')
   .text('SINGLE PLAYER');
-  body.append(startGameSP);
+body.append(startGameSP);
 
-//----------CREATING NEW GAME BUTTON FOR TWO PLAYERS----------
+//----------CREATING PLAY SP AGAIN BUTTON----------
+var resetBoardSP = $('<button>')
+  .attr('id', 'resetBoardSP')
+  .attr('type', 'button')
+  .text('PLAY SP AGAIN');
+body.append(resetBoardSP);
+
+//----------CREATING RESET SCORE BUTTON----------
+var resetScore = $('<button>')
+  .attr('id', 'resetScore')
+  .attr('type', 'button')
+  .text('RESET SCORE');
+body.append(resetScore);
+
+//----------CREATING NEW GAME BUTTON FOR MP----------
 var startGame = $('<button>')
   .attr('id', 'startGame')
   .attr('type', 'button')
   .text('MULTIPLAYER');
-  body.append(startGame);
-
-//----------CREATING PLAY SP AGAIN BUTTON----------
-var resetBoardSP = $('<button>')
-.attr('id', 'resetBoardSP')
-.attr('type', 'button')
-.text('PLAY SP AGAIN');
-body.append(resetBoardSP);
+body.append(startGame);
 
 //----------CREATING PLAY MP AGAIN BUTTON----------
 var resetBoard = $('<button>')
-.attr('id', 'resetBoard')
-.attr('type', 'button')
-.text('PLAY MP AGAIN');
+  .attr('id', 'resetBoard')
+  .attr('type', 'button')
+  .text('PLAY MP AGAIN');
 body.append(resetBoard);
-
-//----------CREATING RESET SCORE BUTTON----------
-var resetScore = $('<button>')
-.attr('id', 'resetScore')
-.attr('type', 'button')
-.text('RESET SCORE');
-body.append(resetScore);
 
 //----------CLICK SOUND EFFECTS----------
 var gunSound = function() {
