@@ -890,7 +890,7 @@ $('td').css({
   'height':'170px',
   'transition':'.2s ease-in-out',
   'margin': '10px',
-  'border-radius': '100%',
+  // 'border-radius': '100%',
   'background':'url("http://s32.postimg.org/5u0nxi0r5/TRANSPARENT_GH.png")',
   'background-position': 'center',
   'background-size': 'cover',
@@ -921,11 +921,7 @@ $('img').css({
   'height':'150px'
 })
 
-
-//----------EXTRA FEATURES TO ADD`---------------
-//let player choose character
-//timer
-//AI
+//----------GET COMPUTER TO MOVE---------
 var a1 = $('#board .1 .a1')
 var a2 = $('#board .1 .a2')
 var a3 = $('#board .1 .a3')

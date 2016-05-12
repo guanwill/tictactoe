@@ -56,6 +56,7 @@
 ##Future Considerations
 * Code is not dry -  could use more for loops
 * AI -  Hard Mode instead of using math.random to generate moves
+* Let users choose token/character and determine who goes first
 
 ##Design Thought Process
 * Immediately, I changed cells shape from square to circle. (Square is too generic). I wanted my tic tac toe to look vastly different, to stand out amongst all tic tac toes.
