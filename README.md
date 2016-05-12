@@ -31,7 +31,7 @@
 * Add additional rows and columns which makes the game more interesting as you have to remember your positions more
 
 ###How to Cheat
-* If player one name is the same player two's name, all the points get allocated to player one, even if player two wins.
+* If Player One name is the same as Player Two's name, all the points won gets allocated to player one, even if player two wins.
 
 ###Project Thought Process
 1. For each click, it will switch players and does a bunch of stuff
