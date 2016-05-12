@@ -12,7 +12,7 @@
 
 ##Day 1
 ###Accomplishments
-* Designed the basic layout of tic tac toe *  based on the structure of pre* assignment homework: Battleships
+* Designed the basic layout of tic tac toe -  based on the structure of pre- assignment homework: Battleships
 * Completed the checkwinner function
 * added basic CSS
 
@@ -30,7 +30,7 @@
 
 ##Day 3
 ###Accomplishments
-* Made AI *  Easy mode
+* Made AI -  Easy mode
 * Game now has a single player and multiplayer mode
 * Further changed the design of tic tac toe
 
