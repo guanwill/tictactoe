@@ -371,7 +371,7 @@ function startClickingSP() {
       $(this).append('<img id="p1" src="http://s32.postimg.org/iy0b3td5d/explosion.png">');  //will insert an image/explosion on the td
       $(this).fadeTo('slow',0);  //the td you just clicked on disappears
       $(this).off('click');  //immediately after td disappears, this td becomes unclickable anymore
-      checkWinner(player1name);  //checks winning conditions everytime you click
+      // checkWinner(player1name);  //checks winning conditions everytime you click
       ifTie();  //checks if its turn 9 everytime you click, if it is, displays 'round finished'
       console.log(turnCount); //for debugging purposes. making sure turn count works
         if(turnCount===8){  //if it is the last turn, when clicked,
