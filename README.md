@@ -17,7 +17,7 @@
 * added basic CSS
 
 ###Challenges
-* Getting the checkWinner function to work by comparing jquery objects *  checks if an object has an image
+* Getting the checkWinner function to work by comparing jquery objects -  checks if an object has an image
 
 ##Day 2
 ###Accomplishments
@@ -26,7 +26,7 @@
 * added sound effects and cursor change
 
 ###Challenges
-* Missed opportunity to learn about 9* bit magic numbers to check winning condition
+* Missed opportunity to learn about 9- bit magic numbers to check winning condition
 
 ##Day 3
 ###Accomplishments
@@ -47,19 +47,19 @@
 ###Challenges
 * Using Markdown for the first time for this project
 
-#Immediate Attention
-* Game breaks sometimes if you multi* click same cell very quickly
-* Game breaks sometimes if you start new single player game or multiplayer game and it prompts for your name twice
-* Game breaks sometimes if you switch from single player to multiplayer and vice versa
-* Make only the 'Play SP Again' button appear while _playing_ single player mode, and disappear while not. Instead, it shows both 'Play SP Again' and 'Play MP Again' regardless of which mode you're in. Suppose to call a specific button appear when there is a winner but because both mode uses the same checkWinner function, cannot map a specific 'Play Again' button to the specific 'Mode'.
+##Immediate Attention
+* Game sometimes breaks if you multi- click same cell very quickly
+* Game sometimes breaks if you start new single player game or multiplayer game and it prompts for your name twice
+* Game sometimes breaks if you switch from single player to multiplayer and vice versa
+* Make only the 'Play SP Again' button appear while playing single player mode, and disappear while not. Instead, it shows both 'Play SP Again' and 'Play MP Again' regardless of which mode you're in. Unable to map a specific 'Play Again' button to the specific 'Mode'.
 
-###Future Considerations
-* Code is not dry *  could use more for loops
-* AI *  Hard Mode instead of using math.random to generate moves
+##Future Considerations
+* Code is not dry -  could use more for loops
+* AI -  Hard Mode instead of using math.random to generate moves
 
 ##Design Thought Process
 * Immediately, I changed cells shape from square to circle. (Square is too generic). I wanted my tic tac toe to look vastly different, to stand out amongst all tic tac toes.
 * Thought of possible sceneries where there are 3x3 circles.
-* Circles reminded me of targets so I created a ninja* star* throwing tic tac tow game. Instead of appending X and O, it throws a star image to the cell.
+* Circles reminded me of targets so I created a ninja- star- throwing tic tac tow game. Instead of appending X and O, it throws a star image to the cell.
 * Then I wanted animation and remembered FadeTo. That immediately triggered a scene of a ghost disappearing in my vision.
-* I wanted to build on that idea so I thought of creating an RPG* themed tic tac toe game and thus, giving players a character, changing their cursor to reflect their weapons, and added sound effects.
+* I wanted to build on that idea so I thought of creating an RPG- themed tic tac toe game and thus, giving players a character, changing their cursor to reflect their weapons, and added sound effects.
