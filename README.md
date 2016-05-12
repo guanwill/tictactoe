@@ -46,41 +46,23 @@
 4. Then I wanted animation and remembered FadeTo. First thing that came into mind was a disappearing ghost.
 5. I wanted to build on that idea so I thought of creating an RPG-themed tic tac toe game and thus, giving players a character, changing their cursor to reflect their weapons, and added sound effects.
 
-###JS Sections
-* Creating Game Heading
-* Creating Board/Grid
-
-* Creating New Game Button for SP
-  * New Game for MP Function
-    * Click Function for MP
-
-* Creating Play Again Button for SP
-  * Play SP Again Function
-    * Click Function for SP
-
-* Creating New Game Button for MP
-  * New Game for MP Function
-		* Click Function for MP
-
-* Creating Play Again Button for MP
-  * Play MP again Function
-		* Click Function for MP
-
-* Creating Reset Score Button
-  * Reset Score Function
-
-
-* Display Current Player’s Turn
-* Creating Win Counts
-* Creating Characters for each player
-* Show the Rules
-* Adding Click Sound Effects
-
-* Default Player Names
-* Grab Specific Player Names for SP
-* Grab Names for MP
-
-* Check if P1 Wins
-* Check if P2 Wins
-* Check if Tie
-* CSS
+###My JS Sections Summarised
+Creating Game Heading
+Creating Board/Grid
+Creating New Game Button for SP - New Game for MP Function - Click Function for MP
+Creating Play Again Button for SP - Play SP Again Function - Click Function for SP
+Creating New Game Button for MP - New Game for MP Function - Click Function for MP
+Creating Play Again Button for MP - Play MP again Function - Click Function for MP
+Creating Reset Score Button
+Reset Score Function
+Display Current Player’s Turn
+Creating Win Counts
+Creating Characters for each player
+Show the Rules
+Adding Click Sound Effects
+Default Player Names
+Grab Specific Player Names for SP
+Grab Names for MP
+Check if P1 Wins
+Check if P2 Wins
+Check if Tie
