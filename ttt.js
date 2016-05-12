@@ -868,61 +868,6 @@ function ifTie(){
   }
 }
 
-//----------CSS----------
-body.css({
-  'text-align': 'center'
-})
-board.css({
-  'width': '600px',
-  'height':'600px',
-  'margin': '0 auto',
-  // 'border':'10px outset rgb(47,5,5)',
-  // 'background': 'url("http://wood-center.gr/Photos/bg.jpg") no-repeat center center fixed'
-})
-
-$('tr').css({
-  'display':'flex',
-  'width':'600px',
-  'height':'200px',
-  'padding':'2px 5px 2p 5px'
-})
-
-$('td').css({
-  'width':'200px',
-  'height':'170px',
-  'transition':'.2s ease-in-out',
-  'margin': '10px',
-  // 'border-radius': '100%',
-  'background':'url("http://s32.postimg.org/me4ziufy9/tttghost3.png")',
-  'background-position': 'center',
-  'background-size': 'cover',
-  // 'border-style': 'solid',
-  // 'border-color':'brown',
-  // 'background':'url("http://www.targetsoftware.co.uk/images/target.png")',
-})
-
-$('td').mouseover(function() {
-  $(this).css({
-    'transform': 'scale(1.05)',
-    // 'background':'red',
-    // 'border':'2px solid red'
-  })
-})
-$('td').mouseout(function() {
-  $(this).css({
-    'background':'url("http://s32.postimg.org/me4ziufy9/tttghost3.png" no-repeat)',
-    'background-position': 'center',
-    'background-size': 'cover',
-    'transform':'none',
-    // 'border':'3px solid brown',
-  })
-})
-
-$('img').css({
-  'width':'150px',
-  'height':'150px'
-})
-
 //----------GET COMPUTER TO MOVE---------
 var a1 = $('#board .1 .a1')
 var a2 = $('#board .1 .a2')
@@ -1063,3 +1008,62 @@ function computerMove() {
     $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //cursor changes to fun cursor
     currentPlayerTurn.text("Your Turn, Gunslinger " + player1name +"!" );
   }
+
+  //----------CSS----------
+  body.css({
+    'text-align': 'center'
+  })
+  board.css({
+    'width': '600px',
+    'height':'600px',
+    'margin': '0 auto',
+    // 'border':'10px outset rgb(47,5,5)',
+    // 'background': 'url("http://wood-center.gr/Photos/bg.jpg") no-repeat center center fixed'
+  })
+
+  $('tr').css({
+    'display':'flex',
+    'width':'600px',
+    'height':'200px',
+    'padding':'2px 5px 2p 5px'
+  })
+
+  $('td').css({
+    'width':'200px',
+    'height':'170px',
+    'transition':'.2s ease-in-out',
+    'margin': '10px',
+    // 'border-radius': '100%',
+    'background':'url("http://s32.postimg.org/me4ziufy9/tttghost3.png")',
+    'background-position': 'center',
+    'background-size': 'cover',
+    // 'border-style': 'solid',
+    // 'border-color':'brown',
+    // 'background':'url("http://www.targetsoftware.co.uk/images/target.png")',
+  })
+
+  $('td').mouseover(function() {
+    $(this).css({
+      'transform' : 'rotate('+ 10 +'deg)',
+      '-webkit-transform' : 'rotate(duration:1000, '+ 10 +'deg)',
+      '-moz-transform' : 'rotate('+ 10 +'deg)',
+      '-ms-transform' : 'rotate('+ 10 +'deg)',
+      'transform' : 'rotate('+ 10 +'deg)'
+      // 'background':'red',
+      // 'border':'2px solid red'
+    })
+  })
+  $('td').mouseout(function() {
+    $(this).css({
+      'background':'url("http://s32.postimg.org/me4ziufy9/tttghost3.png" no-repeat)',
+      'background-position': 'center',
+      'background-size': 'cover',
+      'transform':'none',
+      // 'border':'3px solid brown',
+    })
+  })
+
+  $('img').css({
+    'width':'150px',
+    'height':'150px'
+  })
