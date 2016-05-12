@@ -166,7 +166,8 @@ function newGameSP() {
       'display': 'none'
     })
     $('h3#go').css({ //make the display current player turn appear (as earlier, when game finishes or winner declared, it hides it)
-      'display': 'block'
+      'display': 'block',
+      'visibility':'visible'
     })
     $('#winCount').css({
       'display': 'block'
@@ -226,7 +227,8 @@ function newGame() {
       'display': 'none'
     })
     $('h3#go').css({ //make the display current player turn appear (as earlier, when game finishes or winner declared, it hides it)
-      'display': 'block'
+      'display': 'block',
+      'visibility':'visible'
     })
     $('#winCount').css({
       'display': 'block'
@@ -378,7 +380,9 @@ function startClickingSP() {
           })
         }
       turnCount ++   //at the end of every click, turn count increases by 1
-      setTimeout(computerMove, 1000);  //delays executing computermove function
+      if (checkWinner(player1name) != true) {    //if winnercheck function returns false when player1 plays (i.e does not win), THEN COMPUTER MAKES IT MOVE.
+        setTimeout(computerMove, 1000);  //delays executing computermove function
+      }
     }
   })
 }
@@ -450,6 +454,7 @@ function checkWinner(player){
         player2WinCount++;
         player2WinText.text(player2WinCount + " " + player2name);
       }
+      return true  //makes checkwinner return a true value, so to prevent computer to move if this happens
     }
   }
   //check row 2
@@ -476,6 +481,7 @@ function checkWinner(player){
         player2WinCount++;
         player2WinText.text(player2WinCount + " " + player2name);
       }
+      return true
     }
   }
   //check row 3
@@ -501,6 +507,7 @@ function checkWinner(player){
         player2WinCount++;
         player2WinText.text(player2WinCount + " " + player2name);
       }
+      return true
     }
   }
   //diagonal 1
@@ -526,6 +533,7 @@ function checkWinner(player){
         player2WinCount++;
         player2WinText.text(player2WinCount + " " + player2name);
       }
+      return true
     }
   }
   //diagonal 2
@@ -551,6 +559,7 @@ function checkWinner(player){
         player2WinCount++;
         player2WinText.text(player2WinCount + " " + player2name);
       }
+      return true
     }
   }
   //column 1
@@ -577,6 +586,7 @@ function checkWinner(player){
         player2WinCount++;
         player2WinText.text(player2WinCount + " " + player2name);
       }
+      return true
     }
   }
   //column 2
@@ -603,6 +613,7 @@ function checkWinner(player){
         player2WinCount++;
         player2WinText.text(player2WinCount + " " + player2name);
       }
+      return true
     }
   }
   //column 3
@@ -629,6 +640,8 @@ function checkWinner(player){
         player2WinCount++;
         player2WinText.text(player2WinCount + " " + player2name);
       }
+      return true
+
     }
   }
   //CHECK WINNER WITH P2 IMAGE

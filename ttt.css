@@ -84,3 +84,6 @@ button#resetScore{
   border: 2px solid white;
   padding: 10px;
 }
+button#resetScore:hover{
+  color: red;
+}
