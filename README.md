@@ -1,5 +1,8 @@
 #WEEK 3 TIC TAC TOE
 
+##Task
+-Create a functional tic tac toe game
+
 ##Thought Process
 
 1. For each click, it will switch players and does a bunch of stuff
@@ -53,3 +56,10 @@
 ###Future Considerations
 -Code is not dry - could use more for loops
 -AI - Hard Mode instead of using math.random to generate moves
+
+##Design Thought Process
+-Immediately, I changed cells shape from square to circle. (Square is too generic). I wanted my tic tac toe to look vastly different, to stand out amongst all tic tac toes.
+-Thought of possible sceneries where there are 3x3 circles.
+-Circles reminded me of targets so I created a ninja-star-throwing tic tac tow game. Instead of appending X and O, it throws a star image to the cell.
+-Then I wanted animation and remembered FadeTo. That immediately triggered a scene of a ghost disappearing in my vision.
+-I wanted to build on that idea so I thought of creating an RPG-themed tic tac toe game and thus, giving players a character, changing their cursor to reflect their weapons, and added sound effects.
