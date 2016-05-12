@@ -53,15 +53,14 @@
 * Creating Play Again Button for SP - Play SP Again Function - Click Function for SP
 * Creating New Game Button for MP - New Game for MP Function - Click Function for MP
 * Creating Play Again Button for MP - Play MP again Function - Click Function for MP
-* Creating Reset Score Button
-* Reset Score Function
+* Creating Reset Score Button - Reset Score Function
 * Display Current Player’s Turn
 * Creating Win Counts
 * Creating Characters for each player
 * Show the Rules
 * Adding Click Sound Effects
 * Default Player Names
-* Grab Specific Player Names for SP
+* Grab Names for SP
 * Grab Names for MP
 * Check if P1 Wins
 * Check if P2 Wins
