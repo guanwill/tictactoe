@@ -592,8 +592,8 @@ function checkWinner(player){
     }
   }
   //column 2
-  if( $('#board').find('.c1').length !== '' ){
-    if( $('#board .1 .b2 #p1').length !=0 && $('#board .2 .b2 #p1').length !=0 && $('#board .3 .c2 #p1').length !=0 ){
+  if( $('#board').find('.a2').length !== '' ){
+    if( $('#board .1 .a2 #p1').length !=0 && $('#board .2 .b2 #p1').length !=0 && $('#board .3 .c2 #p1').length !=0 ){
       alert(player +' is the Winner!');
 
       $('#board').find('td').off('click');
@@ -619,7 +619,7 @@ function checkWinner(player){
     }
   }
   //column 3
-  if( $('#board').find('.c1').length !== '' ){
+  if( $('#board').find('.a3').length !== '' ){
     if( $('#board .1 .a3 #p1').length !=0 && $('#board .2 .b3 #p1').length !=0 && $('#board .3 .c3 #p1').length !=0 ){
       alert(player +' is the Winner!');
 
