@@ -129,7 +129,7 @@ body.append(playerType);
 
 //----------SHOWS THE RULES----------
 var rules = $('<div>').attr('id', 'rules')
-.text("Rules are Simple! The gunslinger will always attack first because ninjas are lazy, and the winning conditions are the same as tic-tac-toe. The catch here is, you will have to remember where you've attacked in order to win!")
+.text("Rules are Simple! You are the gunslinger. The gunslinger will always attack first because ninjas are lazy, and the winning conditions are the same as tic-tac-toe. The catch here is, you will have to remember where you've attacked in order to win!")
 body.append(rules);
 
 //----------START NEW GAME FOR SINGLE PLAYER----------
@@ -893,7 +893,7 @@ $('td').css({
   'transition':'.2s ease-in-out',
   'margin': '10px',
   // 'border-radius': '100%',
-  'background':'url("http://s32.postimg.org/5u0nxi0r5/TRANSPARENT_GH.png")',
+  'background':'url("http://s32.postimg.org/me4ziufy9/tttghost3.png")',
   'background-position': 'center',
   'background-size': 'cover',
   // 'border-style': 'solid',
@@ -910,7 +910,7 @@ $('td').mouseover(function() {
 })
 $('td').mouseout(function() {
   $(this).css({
-    'background':'url("http://s32.postimg.org/5u0nxi0r5/TRANSPARENT_GH.png" no-repeat)',
+    'background':'url("http://s32.postimg.org/me4ziufy9/tttghost3.png" no-repeat)',
     'background-position': 'center',
     'background-size': 'cover',
     'transform':'none',
@@ -1057,10 +1057,7 @@ function computerMove() {
         swordSound(); //plays sword sound when clicked
       }
     }
-    else if (result > 9){
-      computerMove();
-    }
-    else if (result < 1){
+    else {
       computerMove();
     }
     $('body').css('cursor', 'url("http://s32.postimg.org/dyroxsmhd/guncursor.png"),auto'); //cursor changes to fun cursor

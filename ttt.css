@@ -68,13 +68,13 @@ button:hover{
 }
 #rules{
   min-width:500px;
-  width: 800px;
+  width: 940px;
   color: lightyellow;
   margin:0 auto;
   font-family: 'Montserrat';
   font-size: 14px;
   position: relative;
-  top: 330px;
+  top: 300px;
 }
 #resetBoardSP{  /*play SP again*/
   margin-right: 100px;
