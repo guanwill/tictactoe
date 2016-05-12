@@ -12,8 +12,8 @@
 
 ##Day 1
 ###Accomplishments
--Designed the basic layout of tic tact tie - based on the structure of pre-assignment homework: Battleships
--Completed the checkwinner function
+-Designed the basic layout of tic tac toe - based on the structure of pre-assignment homework: Battleships
+*Completed the checkwinner function
 -added basic CSS
 
 ###Challenges
