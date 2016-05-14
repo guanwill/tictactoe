@@ -47,7 +47,7 @@ http://guanwill.github.io/tictactoe/ttt.html
 ###Design Thought Process
 1. I changed the cells' shape from square to circle immediately and see what will happen from there.
 2. Thought of possible sceneries where there are 3x3 circles.
-3. Circles reminded me of targets so I created a ninja-star-throwing tic tac tow game. Instead of appending X and O, it throws a star image to the cell.
+3. Circles reminded me of targets so I created a ninja-star-throwing tic tac toe game. Instead of appending X and O, it throws a star image to the cell.
 4. Then I wanted animation and remembered FadeTo. First thing that came into mind was a disappearing ghost.
 5. I wanted to build on that idea so I thought of creating an RPG-themed tic tac toe game and thus, giving players a character, changing their cursor to reflect their weapons, and added sound effects.
 
