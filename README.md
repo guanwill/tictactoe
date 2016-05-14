@@ -3,13 +3,18 @@
 ###Task
 * Create a functional tic tac toe game using HTML, CSS, and Javascript + Jquery
 
+###Hosted link of Tic Tac Attack
+http://guanwill.github.io/tictactoe/ttt.html
+
 ###Accomplishments
 * Designed the basic layout of tic tac toe using jQuery - based on the structure of pre-assignment homework: Battleships
 * Completed the checkWinner function
+* Ensured all buttons and displays are linked
+* Ensured that players are unable to click on the same cell twice, or click on empty cells when game has already finished
 * Added sound effects and cursor change
 * Created a single player mode against AI -  Easy mode
 * Merging single player and multiplayer mode together
-* Created a unique tic-tac-toe game that is vastly different from the generic
+* Created a unique tic-tac-toe game that is vastly different from the generic - Tic Tac Attack, a tic tac toe game with rpg elements
 
 ###Challenges
 * Getting the checkWinner function to work by comparing jQuery objects -  checks if an object has an image
