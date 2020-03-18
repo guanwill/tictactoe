@@ -1,4 +1,4 @@
-_**[GA Project - Not Maintained]**_
+_**[General Assembly Project - Not Maintained!]**_
 
 # WEEK 3 TIC TAC TOE
 
