@@ -1,6 +1,6 @@
-# WEEK 3 TIC TAC TOE
+_**[GA Project - Not Maintained]**_
 
-**[GA Project - Not Maintained]**
+# WEEK 3 TIC TAC TOE
 
 ### Task
 * Create a functional tic tac toe game using HTML, CSS, and Javascript + Jquery
